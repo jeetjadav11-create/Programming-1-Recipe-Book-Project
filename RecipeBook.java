@@ -1,33 +1,30 @@
+import java.util.*;
 
-/**
- * Write a description of class RecipeBook here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class RecipeBook
-{
-    // instance variables - replace the example below with your own
-    private int x;
-    // Jeet is in the team
-    /**
-     * Constructor for objects of class RecipeBook
-     */
-    public RecipeBook()
-    {
-        // initialise instance variables
-        x = 0;
+public class RecipeBook{
+    private String author;
+    private List<Recipe> recipes;
+    
+    public RecipeBook(String author){
+        this.author = author;
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    
+    public String getAuthor(){
+        return author;
+    }
+    
+    public void printRecipe(){
+        
+    }
+    
+    public void printAllRecipes(){
+    
+    }
+    
+    public void addRecipe(){
+        
+    }
+    
+    public void removeRecipe(){
+        
     }
 }

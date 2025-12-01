@@ -1,10 +1,4 @@
 
-/**
- * Write a description of class Appetizer here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class Appetizer extends Recipe
 {
     // instance variables - replace the example below with your own

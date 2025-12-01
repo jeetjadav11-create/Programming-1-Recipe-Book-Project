@@ -1,17 +1,37 @@
+import java.util.*;
 
-/**
- * Write a description of class Recipe here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class Recipe
-{
-    /**
-     * Constructor for objects of class Recipe
-     */
-    public Recipe()
-    {
+public class Recipe{
+    private String name;
+    private String author;
+    private List<Ingredients> ingredients;
+    private HashMap<Integer, String> instructions;
+    
+    public Recipe(){
+        this.name = name;
+        this.author = author;
     }
-
+    
+    public String getName(){
+        return name;
+    }
+    
+    public String getAuthor(){
+        return author;
+    }
+    
+    public void printIngredients(){
+        
+    }
+    
+    public void printInstructions(){
+    
+    }
+    
+    public void addIngredients(){
+    
+    }
+    
+    public void addInstructions(){
+        
+    }
 }
