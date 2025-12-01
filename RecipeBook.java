@@ -1,25 +1,38 @@
 import java.util.*;
-
+import java.util.ArrayList;
 public class RecipeBook{
     private String author;
-    private List<Recipe> recipes;
+    private ArrayList<Recipe> recipes;
 
     public RecipeBook(String author){
         this.author = author;
+        recipes = new ArrayList<>();
     }
 
     public String getAuthor(){
         return author;
     }
 
-    public void printRecipe(){
+    public void printRecipe(String name){
+        for (Recipe r : recipes ){
+            if (r.getName().equals(name)){
+                r.printIngredients();
+                r.printInstructions();
 
+            }
+
+        }
     }
 
     public void printAllRecipes(){
         if (recipes.isEmpty()) {
             System.out.println("No recipes in the book.");
             return;
+        }
+
+        System.out.println("Recipes by " + author + ":");
+        for (Recipe r : recipes) {
+            System.out.println("- " + r.getName());
         }
     }
 
