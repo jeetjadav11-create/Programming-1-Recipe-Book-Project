@@ -6,7 +6,7 @@ public class Recipe{
     private List<Ingredients> ingredients;
     private HashMap<Integer, String> instructions;
     
-    public Recipe(){
+    public Recipe(String name, String author){
         this.name = name;
         this.author = author;
     }
@@ -28,7 +28,7 @@ public class Recipe{
     }
     
     public void addIngredients(){
-    
+        
     }
     
     public void addInstructions(){
