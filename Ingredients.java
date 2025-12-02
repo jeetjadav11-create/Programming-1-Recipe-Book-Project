@@ -1,4 +1,6 @@
-
+/**
+ * Coded By: Gianluca Zambito
+ */
 public class Ingredients
 {
     private String name;

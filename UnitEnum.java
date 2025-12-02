@@ -1,4 +1,7 @@
+/**
+ * Coded By: Gianluca Zambito and Jeet Jadav
+ */
 public enum UnitEnum
 {
-    TEASPOON, TABLESPOON, CUP, MILLIGRAM, GRAM, MILLILITER, LITER
+    TEASPOON, TABLESPOON, CUP, MILLIGRAM, GRAM, MILLILITRE, LITRE
 }
