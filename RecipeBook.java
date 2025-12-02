@@ -13,14 +13,14 @@ public class RecipeBook{
         return author;
     }
 
-    public void printRecipe(String name){
-        for (Recipe r : recipes ){
-            if (r.getName().equals(name)){
-                r.printIngredients();
-                r.printInstructions();
-
+    public void printRecipe(String recipeName){
+        if(!recipes.isEmpty()){
+            for (Recipe r : recipes ){
+                if (r.getName().equals(recipeName)){
+                    r.printIngredients();
+                    r.printInstructions();
+                }
             }
-
         }
     }
 
@@ -30,19 +30,34 @@ public class RecipeBook{
             return;
         }
 
-        System.out.println("Recipes by " + author + ":");
         for (Recipe r : recipes) {
-            System.out.println("- " + r.getName());
+            System.out.println("- " + r.getName() + " by " + r.getAuthor());
         }
     }
 
-    public void addRecipe(Recipe r){
-        if (r != null) {
-            recipes.add(r);  
+    public void addRecipe(Recipe recipe){
+        if (recipe != null) {
+            for (Recipe r : recipes) {
+                if(recipe.equals(r)){
+                    System.out.println("Recipe already exists in book.");
+                    return;
+                }
+            }
+            recipes.add(recipe);  
         }
     }
 
-    public void removeRecipe(Recipe r){
-        recipes.remove(r);
+    public void removeRecipe(Recipe recipe){
+        recipes.remove(recipe);
+    }
+    
+    public void scaleRecipe(String recipeName, double amountToBeScaledBy){
+        if(!recipes.isEmpty()){
+            for (Recipe r : recipes ){
+                if (r.getName().equals(recipeName)){
+                    r.scaleRecipe(amountToBeScaledBy);
+                }
+            }
+        }
     }
 }

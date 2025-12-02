@@ -22,17 +22,39 @@ public class Recipe{
     }
     
     public void printIngredients(){
-        
+        if (ingredients.isEmpty()) {
+            System.out.println("No ingredients have been added to " + getName() + " by " + getAuthor() + " yet.");
+            return;
+        }
+
+        System.out.println("Ingredients in " + getName()  + " by " + getAuthor() +  ":");
+        for (Ingredients i : ingredients) {
+            System.out.println("- " + i.getAmount() + " " + i.getUnit() + "(s) of " + i.getName());
+        }
     }
     
     public void printInstructions(){
+        if (instructions.isEmpty()) {
+            System.out.println("No instructions have been added for " + getName() + " by " + getAuthor() + " yet.");
+            return;
+        }
+        
+        System.out.println("Instructions for " + getName() + " by " + getAuthor() + ":");
         for (int step : instructions.keySet()) {
             System.out.println((step + 1) + ". " + instructions.get(step));
         }   
     }
     
     public void addIngredient(Ingredients ingredient){
-        ingredients.add(ingredient);
+        if(ingredient != null){
+            for (Ingredients i : ingredients) {
+                if(ingredient.equals(i)){
+                    System.out.println("Ingredient already exists in recipe.");
+                    return;
+                }
+            }
+            ingredients.add(ingredient);
+        }
     }
     
     public void addInstruction(String instruction){
@@ -58,6 +80,19 @@ public class Recipe{
         }
 
         instructions = newMap;
+    }
+    
+    public void scaleRecipe(double amountToBeScaledBy){
+        if(ingredients != null){
+            for (Ingredients i : ingredients) {
+                i.setAmount(i.getAmount() * amountToBeScaledBy);
+            }
+            printIngredients();
+            printInstructions();
+            for (Ingredients i : ingredients) {
+                i.setAmount(i.getAmount() / amountToBeScaledBy);
+            }
+        }
     }
 }
 

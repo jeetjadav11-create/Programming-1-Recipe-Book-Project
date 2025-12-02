@@ -22,4 +22,8 @@ public class Ingredients
     public UnitEnum getUnit(){
         return unit;
     }
+    
+    public void setAmount(double newAmount){
+        amount = newAmount;
+    }
 }
