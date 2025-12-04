@@ -74,4 +74,8 @@ public class RecipeBook{
             }
         }
     }
+    
+    public ArrayList<Recipe> getRecipesList(){
+        return recipes;
+    }
 }

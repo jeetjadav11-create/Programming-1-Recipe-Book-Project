@@ -42,7 +42,24 @@ public class RecipeBookTest
     }
     
     @Test
-    public void testgetAuthor(){
+    public void testGetAuthor(){
         assertEquals("Gianluca Zambito", recipeBook.getAuthor());
+    }
+    
+    @Test
+    public void testAddRecipe(){
+        recipeBook.addRecipe(cCake);
+        assertEquals(cCake, recipeBook.getRecipesList().getFirst());
+        
+        recipeBook.addRecipe(omelet);
+        recipeBook.addRecipe(cCake);
+        assertEquals(omelet, recipeBook.getRecipesList().getLast());
+    }
+    
+    @Test
+    public void testRemoveRecipe(){
+        recipeBook.addRecipe(cCake);
+        recipeBook.removeRecipe(cCake);
+        assertEquals(null, recipeBook.getRecipesList().getFirst());
     }
 }
