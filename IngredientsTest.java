@@ -3,7 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Coded By: Jeet Jadav
+ * Coded By: Jeet Jadav and Gianluca Zambito
  */
 public class IngredientsTest
 {

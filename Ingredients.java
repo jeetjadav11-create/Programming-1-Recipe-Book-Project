@@ -11,6 +11,9 @@ public class Ingredients
         this.name = name;
         this.amount = amount;
         this.unit = unit;
+        if(amount <= 0){
+            throw new IllegalArgumentException("Amount must be greater than 0");
+        }
     }
     
     public String getName(){

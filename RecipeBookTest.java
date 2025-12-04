@@ -37,11 +37,6 @@ public class RecipeBookTest
     }
     
     @Test
-    public void test(){
-        
-    }
-    
-    @Test
     public void testGetAuthor(){
         assertEquals("Gianluca Zambito", recipeBook.getAuthor());
     }
@@ -49,17 +44,40 @@ public class RecipeBookTest
     @Test
     public void testAddRecipe(){
         recipeBook.addRecipe(cCake);
-        assertEquals(cCake, recipeBook.getRecipesList().getFirst());
+        assertEquals(1, recipeBook.getRecipesList().size());
         
-        recipeBook.addRecipe(omelet);
         recipeBook.addRecipe(cCake);
-        assertEquals(omelet, recipeBook.getRecipesList().getLast());
+        assertEquals(1, recipeBook.getRecipesList().size());
     }
     
     @Test
     public void testRemoveRecipe(){
         recipeBook.addRecipe(cCake);
         recipeBook.removeRecipe(cCake);
-        assertEquals(null, recipeBook.getRecipesList().getFirst());
+        assertEquals(0, recipeBook.getRecipesList().size());
+    }
+    
+    @Test
+    public void testPrintRecipe(){
+        recipeBook.addRecipe(cCake);
+        assertEquals(true, recipeBook.printRecipe("Chocolate Cake"));
+        
+        assertEquals(false, recipeBook.printRecipe("Omelet"));
+    }
+    
+    @Test
+    public void testPrintAllRecips(){
+        assertEquals(false, recipeBook.printAllRecipes());
+        
+        recipeBook.addRecipe(cCake);
+        assertEquals(true, recipeBook.printAllRecipes());
+    }
+    
+    @Test
+    public void testScaleRecipe(){
+        assertEquals(false, recipeBook.scaleRecipe("Omelet", 2));
+        
+        recipeBook.addRecipe(cCake);
+        assertEquals(true, recipeBook.scaleRecipe("Chocolate Cake", 2));
     }
 }

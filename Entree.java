@@ -7,5 +7,4 @@ public class Entree extends Recipe
     {
         super(name, author);
     }
-
 }

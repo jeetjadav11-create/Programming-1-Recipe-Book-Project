@@ -18,30 +18,34 @@ public class RecipeBook{
     }
 
     //Prints the ingredients and instructions of a given recipe in the book.
-    public void printRecipe(String recipeName){
+    public boolean printRecipe(String recipeName){
         if(!recipes.isEmpty()){
             for (Recipe r : recipes ){
                 if (r.getName().equals(recipeName)){
                     //For each recipe in recipes, if the name matches the name of the given recipe, then print it's ingredients and instructions.
                     r.printIngredients();
                     r.printInstructions();
+                    return true;
                 }
             }
         }
+        return false;
     }
 
     //Prints the name and author of all recipes in the book.
-    public void printAllRecipes(){
+    public boolean printAllRecipes(){
         if (!recipes.isEmpty()) {
             for (Recipe r : recipes) {
                 //For each recipe in recipes, prints the name and author.
                 System.out.println("- " + r.getName() + " by " + r.getAuthor());
+                return true;
             }
         }
         else{
             //If recipes is empty, print no recipes in the book.
             System.out.println("No recipes in the book.");
         }
+        return false;
     }
 
     //Adds a recipe to list recipes.
@@ -64,15 +68,18 @@ public class RecipeBook{
     }
     
     //Calls the method scaleRecipe from Recipe.
-    public void scaleRecipe(String recipeName, double amountToBeScaledBy){
-        if(!recipes.isEmpty()){
+    public boolean scaleRecipe(String recipeName, double amountToBeScaledBy){
+        if(!recipes.isEmpty() || amountToBeScaledBy <= 0){
             for (Recipe r : recipes ){
                 if (r.getName().equals(recipeName)){
                     //For each recipe in recipes, if its name matches with the name given, then calls the method scaleRecipe from Recipe.
                     r.scaleRecipe(amountToBeScaledBy);
+                    return true;
                 }
             }
         }
+        System.out.println("No recipes have been added yet or the amountToBeScaledBy is less than or equal to 0.");
+        return false;
     }
     
     public ArrayList<Recipe> getRecipesList(){
