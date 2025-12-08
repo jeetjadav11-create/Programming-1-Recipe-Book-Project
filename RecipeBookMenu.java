@@ -134,13 +134,8 @@ public class RecipeBookMenu {
     private void scaleRecipe(Command command){
         if(command.hasSecondWord()){
             if(currentRecipe != null){
-                for(Recipe r : recipeBook.getRecipesList()){
-                    String fixedName = r.getName().trim().toLowerCase().replaceAll("\\s","");
-                    if(command.getSecondWord().equals(fixedName)){
-                        recipeBook.printRecipe(r.getName());
-                        currentRecipe = r;
-                    }
-                }
+                //double numberOfServingsNeeded = command.getSecondWord();
+                //recipeBook.scaleRecipe(currentRecipe.getName(), numberOfServingsNeeded);
             }
             else{
                 System.out.println("Not currently viewing a recipe. Use 'choose' to select a recipe.");
