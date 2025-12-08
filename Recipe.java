@@ -6,12 +6,16 @@ import java.util.*;
 public class Recipe{
     private String name;
     private String author;
+    private double servings;
+    private double totalTime;
     private ArrayList<Ingredients> ingredients;
     private HashMap<Integer, String> instructions;
     
-    public Recipe(String name, String author){
+    public Recipe(String name, String author, double servings, double totalTime){
         this.name = name;
         this.author = author;
+        this.servings = servings;
+        this.totalTime = totalTime;
         ingredients = new ArrayList<>();
         instructions = new HashMap<>();
     }
@@ -32,7 +36,7 @@ public class Recipe{
             return;
         }
 
-        System.out.println("Ingredients in " + getName()  + " by " + getAuthor() +  ":");
+        System.out.println("Ingredients:");
         for (Ingredients i : ingredients) {
             //Prints the amount, unit, and name for each ingredient in list ingredients.
             if(i.getUnit() == Unit.NULL){
@@ -52,11 +56,19 @@ public class Recipe{
             return;
         }
         
-        System.out.println("Instructions for " + getName() + " by " + getAuthor() + ":");
+        System.out.println("Instructions:");
         for (int step : instructions.keySet()) {
             //Prints the each key + 1 and their respective value(the instruction).
             System.out.println((step + 1) + ". " + instructions.get(step));
         }   
+    }
+    
+    public double getServings(){
+        return servings;
+    }
+    
+    public double getTotalTime(){
+        return totalTime;
     }
     
     //Adds an ingredient to list ingredients.
@@ -105,18 +117,32 @@ public class Recipe{
     }
     
     //Scales the amount of the ingredient(s) and prints the modified list of ingredients.
-    public void scaleRecipe(double amountToBeScaledBy){
+    public void scaleRecipe(double numberOfServingsNeeded){
+        double difference = 0.0;
+        if(numberOfServingsNeeded > 0){
+            difference = numberOfServingsNeeded / servings;
+        }
+        
         if(ingredients != null){
             for (Ingredients i : ingredients) {
                 //For each ingredient in list ingredients, multiplies the current amount by the amount to be scaled by.
-                i.setAmount(i.getAmount() * amountToBeScaledBy);
+                i.setAmount(i.getAmount() * difference);
             }
+            servings = numberOfServingsNeeded;
+            
+            System.out.println("Total Time: " + getTotalTime() + " minute(s)");
+            System.out.println("");
+            System.out.println("Servings: " + getServings());
+            System.out.println("");
             printIngredients();
+            System.out.println("");
             printInstructions();
+            
             for (Ingredients i : ingredients) {
                 //For each ingredient in list ingredients, brings the amount bak to what it was originally.
-                i.setAmount(i.getAmount() / amountToBeScaledBy);
+                i.setAmount(i.getAmount() / difference);
             }
+            servings = servings / difference;
         }
     }
 }

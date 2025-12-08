@@ -23,6 +23,10 @@ public class RecipeBook{
             for (Recipe r : recipes ){
                 if (r.getName().equals(recipeName)){
                     //For each recipe in recipes, if the name matches the name of the given recipe, then print it's ingredients and instructions.
+                    System.out.println("Total Time: " + r.getTotalTime() + " minute(s)");
+                    System.out.println("");
+                    System.out.println("Servings: " + r.getServings());
+                    System.out.println("");
                     r.printIngredients();
                     System.out.println("");
                     r.printInstructions();

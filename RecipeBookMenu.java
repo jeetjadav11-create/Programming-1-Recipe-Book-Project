@@ -13,7 +13,7 @@ public class RecipeBookMenu {
     }
 
     private void createRecipeBook() {
-        Appetizer cS = new Appetizer("Caprese Skewers", "Gianluca Zambito");
+        Appetizer cS = new Appetizer("Caprese Skewers", "Gianluca Zambito", 10.0, 10);
         Ingredients cT = new Ingredients("Cherry Tomatoe", 20.0, Unit.NULL);
         cS.addIngredient(cT);
         Ingredients mB = new Ingredients("Mozzarella Ball", 10.0, Unit.NULL);
@@ -21,7 +21,7 @@ public class RecipeBookMenu {
         cS.addInstruction("Thread the tomatoes and mozzarella balls onto mini wooden skewers. I like to use two cherry tomatoes and one mozzarella ball per skewer.");
         cS.addInstruction("Season them up, drizzle on the balsamic glaze, and enjoy!");
         
-        Dessert cCMC = new Dessert("Chocolate Chip Mug Cake", "Gianluca Zambito");
+        Dessert cCMC = new Dessert("Chocolate Chip Mug Cake", "Gianluca Zambito", 1.0, 5.0);
         Ingredients eY = new Ingredients("Egg Yolk", 2.0, Unit.NULL);
         cCMC.addIngredient(eY);
         Ingredients butter = new Ingredients("Melted Butter", 1.0, Unit.TABLESPOON);
@@ -81,7 +81,10 @@ public class RecipeBookMenu {
                 break;
             case CHOOSE:
                 chooseRecipe(command);
-                break;    
+                break;
+            case SCALE:
+                scaleRecipe(command);
+                break;
             case HELP:
                 printHelp();
                 break;
@@ -126,5 +129,22 @@ public class RecipeBookMenu {
     
     private void printHelp(){
         parser.showCommands();
+    }
+    
+    private void scaleRecipe(Command command){
+        if(command.hasSecondWord()){
+            if(currentRecipe != null){
+                for(Recipe r : recipeBook.getRecipesList()){
+                    String fixedName = r.getName().trim().toLowerCase().replaceAll("\\s","");
+                    if(command.getSecondWord().equals(fixedName)){
+                        recipeBook.printRecipe(r.getName());
+                        currentRecipe = r;
+                    }
+                }
+            }
+            else{
+                System.out.println("Not currently viewing a recipe. Use 'choose' to select a recipe.");
+            }
+        }
     }
 }

@@ -31,7 +31,7 @@ public class RecipeTest
     @BeforeEach
     public void setUp()
     {
-        recipe = new Recipe("Chocolate Cake", "Gianluca Zambito");
+        recipe = new Recipe("Chocolate Cake", "Gianluca Zambito", 10.0, 45.0);
 
         ing1 = new Ingredients("Flour", 2.0, Unit.CUP);
         ing2 = new Ingredients("Sugar", 1.0, Unit.CUP);

@@ -26,7 +26,7 @@ public class RecipeBookTest
     public void setUp()
     {
         recipeBook = new RecipeBook("Gianluca Zambito");
-        cCake = new Dessert("Chocolate Cake", "Gianluca Zambito");
+        cCake = new Dessert("Chocolate Cake", "Gianluca Zambito", 10.0, 5.0);
     }
     
     @Test

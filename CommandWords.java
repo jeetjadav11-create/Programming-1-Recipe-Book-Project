@@ -14,6 +14,7 @@ public class CommandWords
         validCommands.put("choose", CommandWord.CHOOSE);
         validCommands.put("help", CommandWord.HELP);
         validCommands.put("quit", CommandWord.QUIT);
+        validCommands.put("scale", CommandWord.SCALE);
     }
 
     /**

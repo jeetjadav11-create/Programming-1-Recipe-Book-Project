@@ -3,6 +3,7 @@ public enum CommandWord {
     CHOOSE("choose"),
     HELP("help"),
     QUIT("quit"),
+    SCALE("scale"),
     UNKNOWN("unknown");
     
     

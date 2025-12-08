@@ -3,8 +3,8 @@
  */
 public class Entree extends Recipe
 {
-    public Entree(String name, String author)
+    public Entree(String name, String author, double servings, double totalTime)
     {
-        super(name, author);
+        super(name, author, servings, totalTime);
     }
 }
