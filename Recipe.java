@@ -35,7 +35,12 @@ public class Recipe{
         System.out.println("Ingredients in " + getName()  + " by " + getAuthor() +  ":");
         for (Ingredients i : ingredients) {
             //Prints the amount, unit, and name for each ingredient in list ingredients.
-            System.out.println("- " + i.getAmount() + " " + i.getUnit() + "(s) of " + i.getName());
+            if(i.getUnit() == Unit.NULL){
+                System.out.println("- " + i.getAmount() + " " + i.getName() + "(s)");
+            }
+            else{
+                System.out.println("- " + i.getAmount() + " " + i.getUnit() + "(s) of " + i.getName());
+            }
         }
     }
     

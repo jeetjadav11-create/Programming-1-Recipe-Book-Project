@@ -5,9 +5,9 @@ public class Ingredients
 {
     private String name;
     private double amount;
-    private UnitEnum unit;
+    private Unit unit;
     
-    public Ingredients(String name, double amount, UnitEnum unit){
+    public Ingredients(String name, double amount, Unit unit){
         this.name = name;
         this.amount = amount;
         this.unit = unit;
@@ -24,7 +24,7 @@ public class Ingredients
         return amount;
     }
     
-    public UnitEnum getUnit(){
+    public Unit getUnit(){
         return unit;
     }
     

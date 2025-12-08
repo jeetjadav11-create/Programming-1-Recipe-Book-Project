@@ -16,7 +16,7 @@ public class IngredientsTest
          @BeforeEach
     public void setUp()
     {
-        ingredient = new Ingredients("Flour", 3.0, UnitEnum.CUP);
+        ingredient = new Ingredients("Flour", 3.0, Unit.CUP);
     }
     
     @Test
@@ -31,7 +31,7 @@ public class IngredientsTest
     
     @Test
     public void testGetUnit(){
-        assertEquals(UnitEnum.CUP, ingredient.getUnit());
+        assertEquals(Unit.CUP, ingredient.getUnit());
     }
     
     @Test

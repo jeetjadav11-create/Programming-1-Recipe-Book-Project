@@ -26,14 +26,7 @@ public class RecipeBookTest
     public void setUp()
     {
         recipeBook = new RecipeBook("Gianluca Zambito");
-        
         cCake = new Dessert("Chocolate Cake", "Gianluca Zambito");
-        ingredient1CCake = new Ingredients("Flour", 2.0, UnitEnum.CUP);
-        ingredient2CCake = new Ingredients("Cocoa Powder", 1.0, UnitEnum.CUP);
-        
-        omelet = new Entree("Omelet", "Gianluca Zambito");
-        ingredient1Omelet = new Ingredients("Egg", 0.15, UnitEnum.LITRE);
-        ingredient1Omelet = new Ingredients("Salt", 0.5, UnitEnum.TEASPOON);
     }
     
     @Test

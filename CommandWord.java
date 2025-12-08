@@ -1,0 +1,27 @@
+public enum CommandWord {
+    RETURN("return"),
+    CHOOSE("choose"),
+    HELP("help"),
+    QUIT("quit"),
+    UNKNOWN("unknown");
+    
+    
+    private String command;
+
+    CommandWord(String command) {
+        this.command = command;
+    }
+
+    public String getCommand() {
+        return command;
+    }
+
+    public static CommandWord fromString(String command) {
+        for (CommandWord c : CommandWord.values()) {
+            if (c.getCommand().equalsIgnoreCase(command)) {
+                return c;
+            }
+        }
+        return null; // Command not recognized
+    }
+}

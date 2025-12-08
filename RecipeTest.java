@@ -33,8 +33,8 @@ public class RecipeTest
     {
         recipe = new Recipe("Chocolate Cake", "Gianluca Zambito");
 
-        ing1 = new Ingredients("Flour", 2.0, UnitEnum.CUP);
-        ing2 = new Ingredients("Sugar", 1.0, UnitEnum.CUP);
+        ing1 = new Ingredients("Flour", 2.0, Unit.CUP);
+        ing2 = new Ingredients("Sugar", 1.0, Unit.CUP);
     }
 
     /**
