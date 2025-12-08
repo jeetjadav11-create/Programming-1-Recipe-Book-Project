@@ -40,26 +40,4 @@ public class CommandWords
     {
         return validCommands.containsKey(aString);
     }
-
-    /**
-     * Print all valid commands to System.out.
-     */
-    public void showAll() 
-    {
-        for (String command : validCommands.keySet()) {
-            System.out.print(command + "  ");
-        }
-        System.out.println();
-    }
-
-    public static void commandDetails() {
-        System.out.println("Here are the details about each command:");
-        System.out.println("GO - Move in a specified direction (e.g., 'go north').");
-        System.out.println("QUIT - Exit the game.");
-        System.out.println("HELP - Display a help message.");
-        System.out.println("BACK - Go back to the previous room.");
-        System.out.println("LOOK - Look around the current room and get a description.");
-        System.out.println("DETAILS - Show detailed information about each command.");
-        System.out.println("?");
-    }
 }

@@ -5,9 +5,9 @@ public class RecipeBookMenu {
     private RecipeBook recipeBook;
     private Recipe currentRecipe;
 
-    public RecipeBookMenu(String ownerName) {
+    public RecipeBookMenu(RecipeBook recipeBook) {
         parser = new Parser();
-        recipeBook = new RecipeBook(ownerName);
+        this.recipeBook = recipeBook;
         currentRecipe = null;
         createRecipeBook();
     }
@@ -20,14 +20,31 @@ public class RecipeBookMenu {
         cS.addIngredient(mB);
         cS.addInstruction("Thread the tomatoes and mozzarella balls onto mini wooden skewers. I like to use two cherry tomatoes and one mozzarella ball per skewer.");
         cS.addInstruction("Season them up, drizzle on the balsamic glaze, and enjoy!");
-        recipeBook.addRecipe(cS);
         
-        Entree sF = new Entree("Stir Fry", "Gianluca Zambito");
-        Ingredients cB = new Ingredients("Chicken Breast", 453.5, Unit.GRAM);
-        sF.addIngredient(cB);
-        Ingredients yBP = new Ingredients("Yellow Bell Pepper", 0.5, Unit.NULL);
-        sF.addIngredient(yBP);
-        recipeBook.addRecipe(sF);
+        Dessert cCMC = new Dessert("Chocolate Chip Mug Cake", "Gianluca Zambito");
+        Ingredients eY = new Ingredients("Egg Yolk", 2.0, Unit.NULL);
+        cCMC.addIngredient(eY);
+        Ingredients butter = new Ingredients("Melted Butter", 1.0, Unit.TABLESPOON);
+        cCMC.addIngredient(butter);
+        Ingredients vE = new Ingredients("Vanilla Extract", 0.25, Unit.TEASPOON);
+        cCMC.addIngredient(vE);
+        Ingredients salt = new Ingredients("Salt", 0.125, Unit.TEASPOON);
+        cCMC.addIngredient(salt);
+        Ingredients sugar = new Ingredients("Sugar", 1.5, Unit.TABLESPOON);
+        cCMC.addIngredient(sugar);
+        Ingredients flour = new Ingredients("All-Purpose Flour", 3.0, Unit.TABLESPOON);
+        cCMC.addIngredient(flour);
+        Ingredients bS = new Ingredients("Baking Soda", 0.25, Unit.TEASPOON);
+        cCMC.addIngredient(bS);
+        Ingredients cC = new Ingredients("Chocolate Chip", 1.0, Unit.TABLESPOON);
+        cCMC.addIngredient(cC);
+        cCMC.addInstruction("Add egg yolk, melted butter, vanilla extract, and salt in a mug of your choosing, and stir well.");
+        cCMC.addInstruction("Add flour, baking soda, and chocolate chips into the mug, and stir well.");
+        cCMC.addInstruction("Put the mug in a microwave and bake for 1 minute.");
+        cCMC.addInstruction("Enjoy!");
+        
+        recipeBook.addRecipe(cS);
+        recipeBook.addRecipe(cCMC);
     }
 
     public void open() {
@@ -44,7 +61,6 @@ public class RecipeBookMenu {
     }
 
     private void printWelcome() {
-        System.out.println();
         System.out.println("---- " + recipeBook.getAuthor() + "'s" + " Recipe Book ----");
         System.out.println();
     }
@@ -61,7 +77,7 @@ public class RecipeBookMenu {
     
         switch (commandWord) {
             case RETURN:
-                
+                returnToRecipeBook();
                 break;
             case CHOOSE:
                 chooseRecipe(command);
@@ -80,13 +96,30 @@ public class RecipeBookMenu {
         return wantToQuit;
     }
     
+    private void returnToRecipeBook(){
+        if(currentRecipe != null){
+            printWelcome();
+            recipeBook.printAllRecipes();
+            currentRecipe = null;
+        }
+        else{
+            System.out.println("Already in recipe book.");
+        }
+    }
+    
     private void chooseRecipe(Command command){
         if(command.hasSecondWord()){
-            for(Recipe r : recipeBook.getRecipesList()){
-                String fixedName = r.getName().trim().toLowerCase().replaceAll("\\s","");
-                if(command.getSecondWord().equals(fixedName)){
-                    recipeBook.printRecipe(r.getName());
+            if(currentRecipe == null){
+                for(Recipe r : recipeBook.getRecipesList()){
+                    String fixedName = r.getName().trim().toLowerCase().replaceAll("\\s","");
+                    if(command.getSecondWord().equals(fixedName)){
+                        recipeBook.printRecipe(r.getName());
+                        currentRecipe = r;
+                    }
                 }
+            }
+            else{
+                System.out.println(currentRecipe.getName() + " is currently chosen. Return to recipe book befre choosing another recipe.");
             }
         }
     }

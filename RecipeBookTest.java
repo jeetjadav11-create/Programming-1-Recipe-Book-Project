@@ -59,14 +59,6 @@ public class RecipeBookTest
     }
     
     @Test
-    public void testPrintAllRecips(){
-        assertEquals(false, recipeBook.printAllRecipes());
-        
-        recipeBook.addRecipe(cCake);
-        assertEquals(true, recipeBook.printAllRecipes());
-    }
-    
-    @Test
     public void testScaleRecipe(){
         assertEquals(false, recipeBook.scaleRecipe("Omelet", 2));
         

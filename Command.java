@@ -18,8 +18,4 @@ public class Command {
     public boolean hasSecondWord(){
         return secondWord != null;
     }
-
-    public boolean isUnknown(){
-        return commandWord == null || commandWord.trim().isEmpty();
-    }
 }

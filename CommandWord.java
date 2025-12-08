@@ -22,6 +22,6 @@ public enum CommandWord {
                 return c;
             }
         }
-        return null; // Command not recognized
+        return null;
     }
 }

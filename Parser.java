@@ -22,6 +22,10 @@ public class Parser {
     }
 
     public void showCommands() {
-        System.out.println("Your command words are: move, exit, assist, back, look, details");
+        System.out.println("Your command words are: return, choose, help, and quit.");
+        System.out.println("RETURN - Brings the user back to the recip book from a recipe.");
+        System.out.println("CHOOSE - Choose a recipe from the recipe book. The recipe must be specified after 'choose' and must not have any spaces if the recipe name has more than one word. (ex. Caprese Skewers -> CapreseSkewers)");
+        System.out.println("HELP - Lists the acceptable commands and their descriptions");
+        System.out.println("QUIT - Close the recipe book");
     }
 }

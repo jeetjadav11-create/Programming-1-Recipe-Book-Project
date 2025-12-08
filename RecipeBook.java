@@ -34,25 +34,23 @@ public class RecipeBook{
     }
 
     //Prints the name and author of all recipes in the book.
-    public boolean printAllRecipes(){
+    public void printAllRecipes(){
         if (!recipes.isEmpty()) {
             for (Recipe r : recipes) {
                 //For each recipe in recipes, prints the name and author.
                 System.out.println("- " + r.getName() + " by " + r.getAuthor());
-                return true;
             }
         }
         else{
             //If recipes is empty, print no recipes in the book.
             System.out.println("No recipes in the book.");
         }
-        return false;
     }
 
     //Adds a recipe to list recipes.
     public void addRecipe(Recipe recipe){
-        if (recipe != null) {
-            for (Recipe r : recipes) {
+        if(recipe != null) {
+            for(Recipe r : recipes) {
                 if(recipe.equals(r)){
                     //For each recipe in recipes, if it matches with the recipe to be added, then stops the code from proceeding.
                     System.out.println("Recipe already exists in book.");
