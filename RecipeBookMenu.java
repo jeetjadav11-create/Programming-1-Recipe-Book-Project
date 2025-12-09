@@ -107,6 +107,7 @@ public class RecipeBookMenu {
                 break;
             case ADD:
                 addRecipe(command);
+                addIngredient(command);
                 break;
             case HELP:
                 printHelp();
@@ -167,25 +168,67 @@ public class RecipeBookMenu {
     
     private void addRecipe(Command command){
         Scanner reader = parser.getReader();
-        if(currentRecipe == null){
-            System.out.println("Enter recipe name");
-            String name = reader.nextLine();
-                
-            System.out.println("Enter number of servings.");
-            double servings = reader.nextDouble();
-            reader.nextLine();
-                
-            System.out.println("Enter total time to cook (in minutes).");
-            double time = reader.nextDouble();
-            reader.nextLine();
-            
-            Recipe recipe = new Recipe(name, recipeBook.getAuthor(), servings, time);
-            recipeBook.addRecipe(recipe);
-            printWelcome();
-            recipeBook.printAllRecipes();
+        if(command.hasSecondWord()){
+            if(command.getSecondWord().equals("recipe")){
+                if(currentRecipe == null){
+                    System.out.println("Enter recipe name");
+                    String name = reader.nextLine();
+                        
+                    System.out.println("Enter number of servings.");
+                    double servings = reader.nextDouble();
+                    reader.nextLine();
+                        
+                    System.out.println("Enter total time to cook (in minutes).");
+                    double time = reader.nextDouble();
+                    reader.nextLine();
+                    
+                    Recipe recipe = new Recipe(name, recipeBook.getAuthor(), servings, time);
+                    recipeBook.addRecipe(recipe);
+                    printWelcome();
+                    recipeBook.printAllRecipes();
+                }
+                else{
+                    System.out.println("Must be in recipe book to add a recipe. Use 'return' to go to recipe book.");
+                }
+            }
         }
-        else{
-            System.out.println("Must be in recipe book to add a recipe. Use 'return' to go to recipe book.");
+    }
+    
+    private void addIngredient(Command command){
+        Scanner reader = parser.getReader();
+        if(command.hasSecondWord()){
+            if(command.getSecondWord().equals("ingredient")){
+                if(currentRecipe != null){
+                    System.out.println("Enter ingredient name.");
+                    String name = reader.nextLine();
+                        
+                    System.out.println("Enter amount.");
+                    double amount = reader.nextDouble();
+                    reader.nextLine();
+                    
+                    Unit unit = null;
+                    while(unit == null){
+                        System.out.println("Enter unit of measurement.");
+                        String unitInput = reader.nextLine();
+                        try{
+                            unit = Unit.valueOf(unitInput.toUpperCase());
+                        }catch (IllegalArgumentException e) {
+                            System.out.println("Invalid unit! Please enter one of: ");
+                            for (Unit u : Unit.values()) {
+                                System.out.println(" - " + u);
+                            }
+                            
+                        }
+                    }
+                    
+                    Ingredients ingredient = new Ingredients(name, amount, unit);
+                    currentRecipe.addIngredient(ingredient);
+                    recipeBook.printRecipe(currentRecipe.getName());
+                }
+                else{
+                    System.out.println("Must be in a recipe to add an ingredient. Use 'choose' to go to a recipe.");
+                }
+            }
         }
     }
     
