@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=RecipeTest
+comment0.text=\r\n\ The\ test\ class\ for\ Recipe.\r\n\ Coded\ By\:\ Jeet\ Jadav\r\n
+comment1.params=
+comment1.target=RecipeTest()
+comment10.params=
+comment10.target=void\ testPrintInstructions()
+comment11.params=
+comment11.target=void\ testScaleRecipe()
+comment2.params=
+comment2.target=void\ setUp()
+comment3.params=
+comment3.target=void\ testGetName()
+comment4.params=
+comment4.target=void\ testGetAuthor()
+comment5.params=
+comment5.target=void\ testAddIngredient()
+comment6.params=
+comment6.target=void\ testRemoveIngredient()
+comment7.params=
+comment7.target=void\ testAddInstruction()
+comment8.params=
+comment8.target=void\ testRemoveInstruction()
+comment9.params=
+comment9.target=void\ testPrintIngredients()
+numComments=12

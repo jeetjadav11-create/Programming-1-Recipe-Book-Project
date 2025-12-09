@@ -15,6 +15,13 @@ public class RecipeBookMenu {
         createRecipeBook();
     }
     
+    //Sets this class as the main class. Do not use unless starting project outside of BlueJ.
+    public static void main(String[] args) {
+        RecipeBook recipeBook = new RecipeBook("Gianluca Zambito");
+        RecipeBookMenu recipeBookMenu = new RecipeBookMenu(recipeBook);
+        recipeBookMenu.open();
+    }
+    
     //Loads premade recipes into the recipe book.
     private void createRecipeBook() {
         //Caprese Skewers.

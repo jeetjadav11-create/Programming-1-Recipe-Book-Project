@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=RecipeBook
+comment0.text=\r\n\ Stores\ all\ the\ recipes\ into\ one\ object.\r\n\ Coded\ By\:\ Jeet\ Jadav\r\n
+comment1.params=author
+comment1.target=RecipeBook(java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getAuthor()
+comment3.params=
+comment3.target=java.util.ArrayList\ getRecipesList()
+comment4.params=recipeName
+comment4.target=boolean\ printRecipe(java.lang.String)
+comment5.params=
+comment5.target=void\ printAllRecipes()
+comment6.params=recipe
+comment6.target=void\ addRecipe(Recipe)
+comment7.params=recipe
+comment7.target=void\ removeRecipe(Recipe)
+comment8.params=recipeName\ amountToBeScaledBy
+comment8.target=boolean\ scaleRecipe(java.lang.String,\ double)
+numComments=9

@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Entree
+comment0.text=\r\n\ The\ subclass\ for\ entrees.\r\n\ Coded\ By\:\ Gianluca\ Zambito\ and\ Jeet\ Jadav\r\n
+comment1.params=name\ author\ servings\ totalTime
+comment1.target=Entree(java.lang.String,\ java.lang.String,\ double,\ double)
+numComments=2

@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Ingredients
+comment0.text=\r\n\ The\ class\ for\ each\ ingredient.\r\n\ Coded\ By\:\ Gianluca\ Zambito\r\n
+comment1.params=name\ amount\ unit
+comment1.target=Ingredients(java.lang.String,\ double,\ Unit)
+comment2.params=
+comment2.target=java.lang.String\ getName()
+comment3.params=
+comment3.target=double\ getAmount()
+comment4.params=
+comment4.target=Unit\ getUnit()
+comment5.params=newAmount
+comment5.target=void\ setAmount(double)
+numComments=6

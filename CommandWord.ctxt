@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=CommandWord
+comment0.text=\r\n\ Holds\ the\ enumeration\ command\ words.\r\n\ Coded\ By\:\ Gianluca\ Zambito\ and\ Jeet\ Jadav\r\n
+comment1.params=command
+comment1.target=CommandWord(java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getCommand()
+comment3.params=command
+comment3.target=CommandWord\ fromString(java.lang.String)
+numComments=4
