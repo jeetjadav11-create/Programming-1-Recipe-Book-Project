@@ -1,12 +1,11 @@
 import java.util.HashMap;
-
+/**
+ * Coded By: Gianluca Zambito and Jeet Jadav
+ */
 public class CommandWords
 {
     private HashMap<String, CommandWord> validCommands;
 
-    /**
-     * Constructor - initialise the command words.
-     */
     public CommandWords()
     {
         validCommands = new HashMap<>();
@@ -16,13 +15,8 @@ public class CommandWords
         validCommands.put("quit", CommandWord.QUIT);
         validCommands.put("scale", CommandWord.SCALE);
     }
-
-    /**
-     * Find the CommandWord associated with a command string.
-     * @param commandWord The word to look up (as a string).
-     * @return The CommandWord corresponding to commandWord, or UNKNOWN
-     *         if it is not a valid command word.
-     */
+    
+    //Converts an input command into the right enum value.
     public CommandWord getCommandWord(String commandWord)
     {
         CommandWord command = validCommands.get(commandWord);
@@ -33,10 +27,7 @@ public class CommandWords
         }
     }
 
-    /**
-     * Check whether a given String is a valid command word. 
-     * @return true if it is, false if it isn't.
-     */
+    //Checks if the input is a command.
     public boolean isCommand(String aString)
     {
         return validCommands.containsKey(aString);

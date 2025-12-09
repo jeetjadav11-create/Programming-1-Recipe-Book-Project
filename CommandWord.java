@@ -1,3 +1,6 @@
+/**
+ * Coded By: Gianluca Zambito and Jeet Jadav
+ */
 public enum CommandWord {
     RETURN("return"),
     CHOOSE("choose"),
@@ -17,6 +20,7 @@ public enum CommandWord {
         return command;
     }
 
+    //turns inputs into a command enum.
     public static CommandWord fromString(String command) {
         for (CommandWord c : CommandWord.values()) {
             if (c.getCommand().equalsIgnoreCase(command)) {

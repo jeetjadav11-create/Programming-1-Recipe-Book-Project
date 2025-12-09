@@ -1,3 +1,6 @@
+/**
+ * Coded By: Gianluca Zambito and Jeet Jadav
+ */
 public class Command {
     private String commandWord;
     private String secondWord;

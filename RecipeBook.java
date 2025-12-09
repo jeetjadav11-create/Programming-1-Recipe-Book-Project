@@ -1,6 +1,5 @@
 import java.util.*;
 import java.util.ArrayList;
-
 /**
  * Coded By: Jeet Jadav
  */
@@ -16,6 +15,10 @@ public class RecipeBook{
     public String getAuthor(){
         return author;
     }
+    
+     public ArrayList<Recipe> getRecipesList(){
+        return recipes;
+    }
 
     //Prints the ingredients and instructions of a given recipe in the book.
     public boolean printRecipe(String recipeName){
@@ -23,6 +26,8 @@ public class RecipeBook{
             for (Recipe r : recipes ){
                 if (r.getName().equals(recipeName)){
                     //For each recipe in recipes, if the name matches the name of the given recipe, then print it's ingredients and instructions.
+                    System.out.println("---- " + r.getName() + " by " + r.getAuthor() + " ----");
+                    System.out.println("");
                     System.out.println("Total Time: " + r.getTotalTime() + " minute(s)");
                     System.out.println("");
                     System.out.println("Servings: " + r.getServings());
@@ -70,7 +75,7 @@ public class RecipeBook{
         recipes.remove(recipe);
     }
     
-    //Calls the method scaleRecipe from Recipe.
+    //Scales the amount of the ingredient(s) and servings in a recipe, and prints the modified list.
     public boolean scaleRecipe(String recipeName, double amountToBeScaledBy){
         if(!recipes.isEmpty() || amountToBeScaledBy <= 0){
             for (Recipe r : recipes ){
@@ -83,9 +88,5 @@ public class RecipeBook{
         }
         System.out.println("No recipes have been added yet or the amountToBeScaledBy is less than or equal to 0.");
         return false;
-    }
-    
-    public ArrayList<Recipe> getRecipesList(){
-        return recipes;
     }
 }

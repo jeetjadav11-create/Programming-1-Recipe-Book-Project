@@ -1,5 +1,7 @@
 import java.util.ArrayList;
-
+/**
+ * Coded By: Gianluca Zambito
+ */
 public class RecipeBookMenu {
     private Parser parser;
     private RecipeBook recipeBook;
@@ -11,8 +13,10 @@ public class RecipeBookMenu {
         currentRecipe = null;
         createRecipeBook();
     }
-
+    
+    //Loads premade recipes into the recipe book.
     private void createRecipeBook() {
+        //Caprese Skewers.
         Appetizer cS = new Appetizer("Caprese Skewers", "Gianluca Zambito", 10.0, 10);
         Ingredients cT = new Ingredients("Cherry Tomatoe", 20.0, Unit.NULL);
         cS.addIngredient(cT);
@@ -21,6 +25,7 @@ public class RecipeBookMenu {
         cS.addInstruction("Thread the tomatoes and mozzarella balls onto mini wooden skewers. I like to use two cherry tomatoes and one mozzarella ball per skewer.");
         cS.addInstruction("Season them up, drizzle on the balsamic glaze, and enjoy!");
         
+        //Chocolate Chip Mug Cake.
         Dessert cCMC = new Dessert("Chocolate Chip Mug Cake", "Gianluca Zambito", 1.0, 5.0);
         Ingredients eY = new Ingredients("Egg Yolk", 2.0, Unit.NULL);
         cCMC.addIngredient(eY);
@@ -47,6 +52,7 @@ public class RecipeBookMenu {
         recipeBook.addRecipe(cCMC);
     }
 
+    //Opens the menu.
     public void open() {
         printWelcome();
         recipeBook.printAllRecipes();
@@ -60,21 +66,25 @@ public class RecipeBookMenu {
         System.out.println("Closing recipe book.");
     }
 
+    //Prints the opening line.
     private void printWelcome() {
         System.out.println("---- " + recipeBook.getAuthor() + "'s" + " Recipe Book ----");
         System.out.println();
     }
-
+    
+    //Processes the input commands and calls the required methods.
     private boolean processCommand(Command command) {
         boolean wantToQuit = false;
-    
+        
+        //Gets the first command.
         CommandWord commandWord = CommandWord.fromString(command.getCommandWord());
 
         if (commandWord == null) {
             System.out.print("");
             return false;
         }
-    
+        
+        //Checks to see if the command word matches any of the following cases, if so, runs the code within the case.
         switch (commandWord) {
             case RETURN:
                 returnToRecipeBook();
@@ -99,6 +109,7 @@ public class RecipeBookMenu {
         return wantToQuit;
     }
     
+    //Returns the user to the first page (the list of recipes).
     private void returnToRecipeBook(){
         if(currentRecipe != null){
             printWelcome();
@@ -110,6 +121,7 @@ public class RecipeBookMenu {
         }
     }
     
+    //Chooses a recipe from the list of recipes.
     private void chooseRecipe(Command command){
         if(command.hasSecondWord()){
             if(currentRecipe == null){
@@ -127,19 +139,20 @@ public class RecipeBookMenu {
         }
     }
     
-    private void printHelp(){
-        parser.showCommands();
-    }
-    
+    //Scales the amount of the ingredient(s) and servings in a recipe, and prints the modified list.
     private void scaleRecipe(Command command){
         if(command.hasSecondWord()){
             if(currentRecipe != null){
-                //double numberOfServingsNeeded = command.getSecondWord();
-                //recipeBook.scaleRecipe(currentRecipe.getName(), numberOfServingsNeeded);
+                double numberOfServingsNeeded = Double.parseDouble(command.getSecondWord());
+                recipeBook.scaleRecipe(currentRecipe.getName(), numberOfServingsNeeded);
             }
             else{
                 System.out.println("Not currently viewing a recipe. Use 'choose' to select a recipe.");
             }
         }
+    }
+    
+    private void printHelp(){
+        parser.showCommands();
     }
 }

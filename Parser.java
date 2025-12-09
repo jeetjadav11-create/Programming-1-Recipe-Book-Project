@@ -1,5 +1,7 @@
 import java.util.Scanner;
-
+/**
+ * Coded By: Gianluca Zambito and Jeet Jadav
+ */
 public class Parser {
     private Scanner reader;
 
@@ -7,6 +9,7 @@ public class Parser {
         reader = new Scanner(System.in);
     }
 
+    //Receives the command and checks if it has one or two words.
     public Command getCommand() {
         System.out.print("\n> ");
         String input = reader.nextLine().trim().toLowerCase();
@@ -21,6 +24,7 @@ public class Parser {
         }
     }
 
+    //Prints the help lines.
     public void showCommands() {
         System.out.println("Your command words are: return, choose, scale, help, and quit.");
         System.out.println("RETURN - Brings the user back to the recip book from a recipe.");

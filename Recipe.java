@@ -1,5 +1,4 @@
 import java.util.*;
-
 /**
  * Coded By: Gianluca Zambito
  */
@@ -26,6 +25,14 @@ public class Recipe{
     
     public String getAuthor(){
         return author;
+    }
+    
+    public double getServings(){
+        return servings;
+    }
+    
+    public double getTotalTime(){
+        return totalTime;
     }
     
     //Prints all ingredients.
@@ -61,14 +68,6 @@ public class Recipe{
             //Prints the each key + 1 and their respective value(the instruction).
             System.out.println((step + 1) + ". " + instructions.get(step));
         }   
-    }
-    
-    public double getServings(){
-        return servings;
-    }
-    
-    public double getTotalTime(){
-        return totalTime;
     }
     
     //Adds an ingredient to list ingredients.
@@ -116,7 +115,7 @@ public class Recipe{
         instructions = newMap;
     }
     
-    //Scales the amount of the ingredient(s) and prints the modified list of ingredients.
+    //Scales the amount of the ingredient(s) and servings, and prints the modified list.
     public void scaleRecipe(double numberOfServingsNeeded){
         double difference = 0.0;
         if(numberOfServingsNeeded > 0){
@@ -130,9 +129,11 @@ public class Recipe{
             }
             servings = numberOfServingsNeeded;
             
-            System.out.println("Total Time: " + getTotalTime() + " minute(s)");
+            System.out.println("---- " + name + " by " + author + " ----");
             System.out.println("");
-            System.out.println("Servings: " + getServings());
+            System.out.println("Total Time: " + totalTime + " minute(s)");
+            System.out.println("");
+            System.out.println("Servings: " + servings);
             System.out.println("");
             printIngredients();
             System.out.println("");
