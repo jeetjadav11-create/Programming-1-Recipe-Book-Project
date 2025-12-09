@@ -1,4 +1,5 @@
 /**
+ * The class for each command.
  * Coded By: Gianluca Zambito and Jeet Jadav
  */
 public class Command {

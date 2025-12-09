@@ -1,5 +1,6 @@
 import java.util.Scanner;
 /**
+ * Reads the user inputs.
  * Coded By: Gianluca Zambito and Jeet Jadav
  */
 public class Parser {

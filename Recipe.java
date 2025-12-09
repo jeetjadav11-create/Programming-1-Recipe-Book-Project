@@ -1,5 +1,6 @@
 import java.util.*;
 /**
+ * The main class for recipes that stores all the methods.
  * Coded By: Gianluca Zambito
  */
 public class Recipe{

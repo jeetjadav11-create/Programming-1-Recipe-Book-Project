@@ -1,4 +1,5 @@
 /**
+ * The subclass for appetizers.
  * Coded By: Gianluca Zambito and Jeet Jadav
  */
 public class Appetizer extends Recipe

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 /**
+ * The driver class for the project.
  * Coded By: Gianluca Zambito
  */
 public class RecipeBookMenu {

@@ -1,4 +1,5 @@
 /**
+ * Holds the enumeration command words.
  * Coded By: Gianluca Zambito and Jeet Jadav
  */
 public enum CommandWord {

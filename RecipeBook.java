@@ -1,6 +1,7 @@
 import java.util.*;
 import java.util.ArrayList;
 /**
+ * Stores all the recipes into one object.
  * Coded By: Jeet Jadav
  */
 public class RecipeBook{

@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
+ * The test class for Ingredients
  * Coded By: Jeet Jadav and Gianluca Zambito
  */
 public class IngredientsTest

@@ -1,4 +1,5 @@
 /**
+ * The class for each ingredient.
  * Coded By: Gianluca Zambito
  */
 public class Ingredients

@@ -1,4 +1,5 @@
 /**
+ * The subclass for desserts.
  * Coded By: Gianluca Zambito and Jeet Jadav
  */
 public class Dessert extends Recipe

@@ -1,5 +1,6 @@
 import java.util.HashMap;
 /**
+ * Checks for valid commands and converts them into enum values.
  * Coded By: Gianluca Zambito and Jeet Jadav
  */
 public class CommandWords
