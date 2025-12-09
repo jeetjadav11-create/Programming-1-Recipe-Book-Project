@@ -10,6 +10,10 @@ public class Parser {
         reader = new Scanner(System.in);
     }
 
+    public Scanner getReader(){
+        return reader;
+    }
+    
     //Receives the command and checks if it has one or two words.
     public Command getCommand() {
         System.out.print("\n> ");

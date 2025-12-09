@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  * The driver class for the project.
  * Coded By: Gianluca Zambito
@@ -164,18 +166,26 @@ public class RecipeBookMenu {
     }
     
     private void addRecipe(Command command){
-        if(command.hasSecondWord()){
-            if(currentRecipe == null){
-                String name = command.getSecondWord();
+        Scanner reader = parser.getReader();
+        if(currentRecipe == null){
+            System.out.println("Enter recipe name");
+            String name = reader.nextLine();
                 
-                System.out.println("How many servings does it make?");
+            System.out.println("Enter number of servings.");
+            double servings = reader.nextDouble();
+            reader.nextLine();
                 
-                System.out.println("How long (in minutes) does it take to make");
-                //Recipe recipe = new Recipe();
-            }
-            else{
-                System.out.println("Must be in recipe book to add a recipe. Use 'return' to go to recipe book.");
-            }
+            System.out.println("Enter total time to cook (in minutes).");
+            double time = reader.nextDouble();
+            reader.nextLine();
+            
+            Recipe recipe = new Recipe(name, recipeBook.getAuthor(), servings, time);
+            recipeBook.addRecipe(recipe);
+            printWelcome();
+            recipeBook.printAllRecipes();
+        }
+        else{
+            System.out.println("Must be in recipe book to add a recipe. Use 'return' to go to recipe book.");
         }
     }
     
