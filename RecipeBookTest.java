@@ -36,11 +36,9 @@ public class RecipeBookTest
     
     @Test
     public void testAddRecipe(){
-        recipeBook.addRecipe(cCake);
-        assertEquals(1, recipeBook.getRecipesList().size());
+        assertEquals(true, recipeBook.addRecipe(cCake));
         
-        recipeBook.addRecipe(cCake);
-        assertEquals(1, recipeBook.getRecipesList().size());
+        assertEquals(false, recipeBook.addRecipe(cCake));
     }
     
     @Test

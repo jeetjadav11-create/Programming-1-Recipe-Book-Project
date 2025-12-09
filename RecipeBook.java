@@ -58,17 +58,19 @@ public class RecipeBook{
     }
 
     //Adds a recipe to list recipes.
-    public void addRecipe(Recipe recipe){
+    public boolean addRecipe(Recipe recipe){
         if(recipe != null) {
             for(Recipe r : recipes) {
                 if(recipe.equals(r)){
                     //For each recipe in recipes, if it matches with the recipe to be added, then stops the code from proceeding.
                     System.out.println("Recipe already exists in book.");
-                    return;
+                    return false;
                 }
             }
-            recipes.add(recipe);  
+            recipes.add(recipe);
+            return true;
         }
+        return false;
     }
 
     //Removes a recipe from list recipes.

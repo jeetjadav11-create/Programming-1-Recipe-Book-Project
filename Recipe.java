@@ -72,17 +72,19 @@ public class Recipe{
     }
     
     //Adds an ingredient to list ingredients.
-    public void addIngredient(Ingredients ingredient){
+    public boolean addIngredient(Ingredients ingredient){
         if(ingredient != null){
             for (Ingredients i : ingredients) {
                 if(ingredient.equals(i) || (ingredient.getName()).equals(i.getName())){
                     //For each ingredient in ingredients, checks to see if it is the same or has the same name as the ingredients that is to be added. If so, then the code will not proceed.
                     System.out.println("Ingredient already exists in recipe.");
-                    return;
+                    return false;
                 }
             }
             ingredients.add(ingredient);
+            return true;
         }
+        return false;
     }
     
     //Adds an instruction and step number to hash map instructions.

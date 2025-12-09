@@ -103,6 +103,9 @@ public class RecipeBookMenu {
             case SCALE:
                 scaleRecipe(command);
                 break;
+            case ADD:
+                addRecipe(command);
+                break;
             case HELP:
                 printHelp();
                 break;
@@ -156,6 +159,22 @@ public class RecipeBookMenu {
             }
             else{
                 System.out.println("Not currently viewing a recipe. Use 'choose' to select a recipe.");
+            }
+        }
+    }
+    
+    private void addRecipe(Command command){
+        if(command.hasSecondWord()){
+            if(currentRecipe == null){
+                String name = command.getSecondWord();
+                
+                System.out.println("How many servings does it make?");
+                
+                System.out.println("How long (in minutes) does it take to make");
+                //Recipe recipe = new Recipe();
+            }
+            else{
+                System.out.println("Must be in recipe book to add a recipe. Use 'return' to go to recipe book.");
             }
         }
     }

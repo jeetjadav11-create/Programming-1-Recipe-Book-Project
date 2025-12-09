@@ -15,6 +15,7 @@ public class CommandWords
         validCommands.put("help", CommandWord.HELP);
         validCommands.put("quit", CommandWord.QUIT);
         validCommands.put("scale", CommandWord.SCALE);
+        validCommands.put("add", CommandWord.ADD);
     }
     
     //Converts an input command into the right enum value.

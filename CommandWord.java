@@ -8,6 +8,7 @@ public enum CommandWord {
     HELP("help"),
     QUIT("quit"),
     SCALE("scale"),
+    ADD("add"),
     UNKNOWN("unknown");
     
     

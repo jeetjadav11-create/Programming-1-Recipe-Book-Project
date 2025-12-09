@@ -37,8 +37,8 @@ public class RecipeTest
 
     @Test
     public void testAddIngredient() {
-        recipe.addIngredient(ing1);
-        recipe.addIngredient(ing1);   
+        assertEquals(true, recipe.addIngredient(ing1));
+        assertEquals(false, recipe.addIngredient(ing1));   
         assertEquals("Flour", ing1.getName());
         assertEquals(2.0, ing1.getAmount());
     }
