@@ -36,6 +36,10 @@ public class Recipe{
         return totalTime;
     }
     
+    public ArrayList<Ingredients> getIngredientsList(){
+        return ingredients;
+    }
+    
     //Prints all ingredients.
     public void printIngredients(){
         if (ingredients.isEmpty()) {

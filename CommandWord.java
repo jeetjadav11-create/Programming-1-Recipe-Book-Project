@@ -9,6 +9,8 @@ public enum CommandWord {
     QUIT("quit"),
     SCALE("scale"),
     ADD("add"),
+    REMOVE("remove"),
+    SET("set"),
     UNKNOWN("unknown");
     
     

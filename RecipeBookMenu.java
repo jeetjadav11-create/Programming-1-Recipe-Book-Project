@@ -78,7 +78,7 @@ public class RecipeBookMenu {
 
     //Prints the opening line.
     private void printWelcome() {
-        System.out.println("---- " + recipeBook.getAuthor() + "'s" + " Recipe Book ----");
+        System.out.println("---- " + recipeBook.getOwner() + "'s" + " Recipe Book ----");
         System.out.println();
     }
     
@@ -108,6 +108,15 @@ public class RecipeBookMenu {
             case ADD:
                 addRecipe(command);
                 addIngredient(command);
+                addInstruction(command);
+                break;
+            case REMOVE:
+                removeRecipe(command);
+                removeIngredient(command);
+                removeInstruction(command);
+                break;
+            case SET:
+                
                 break;
             case HELP:
                 printHelp();
@@ -182,7 +191,7 @@ public class RecipeBookMenu {
                     double time = reader.nextDouble();
                     reader.nextLine();
                     
-                    Recipe recipe = new Recipe(name, recipeBook.getAuthor(), servings, time);
+                    Recipe recipe = new Recipe(name, recipeBook.getOwner(), servings, time);
                     recipeBook.addRecipe(recipe);
                     printWelcome();
                     recipeBook.printAllRecipes();
@@ -223,6 +232,111 @@ public class RecipeBookMenu {
                     
                     Ingredients ingredient = new Ingredients(name, amount, unit);
                     currentRecipe.addIngredient(ingredient);
+                    recipeBook.printRecipe(currentRecipe.getName());
+                }
+                else{
+                    System.out.println("Must be in a recipe to add an ingredient. Use 'choose' to go to a recipe.");
+                }
+            }
+        }
+    }
+    
+    private void addInstruction(Command command){
+        Scanner reader = parser.getReader();
+        if(command.hasSecondWord()){
+            if(command.getSecondWord().equals("instruction")){
+                if(currentRecipe != null){
+                    System.out.println("Enter instruction.");
+                    String instruction = reader.nextLine();
+                    
+                    currentRecipe.addInstruction(instruction);
+                    recipeBook.printRecipe(currentRecipe.getName());
+                }
+                else{
+                    System.out.println("Must be in a recipe to add an instruction. Use 'choose' to go to a recipe.");
+                }
+            }
+        }
+    }
+    
+    private void removeRecipe(Command command){
+        Scanner reader = parser.getReader();
+        if(command.hasSecondWord()){
+            if(command.getSecondWord().equals("recipe")){
+                if(currentRecipe == null){
+                    System.out.println("Enter recipe name");
+                    String name = reader.nextLine();
+                    
+                    System.out.println("Enter author name");
+                    String author = reader.nextLine();
+                    
+                    boolean found = false;
+                    Recipe toRemove = null;
+                    
+                    for(Recipe r : recipeBook.getRecipesList()) {
+                        if (r.getName().equals(name) && r.getAuthor().equals(author)) {
+                            toRemove = r;
+                            found = true;
+                        }
+                    }
+                    
+                    if(found){
+                        recipeBook.removeRecipe(toRemove);
+                        printWelcome();
+                        recipeBook.printAllRecipes();
+                    }
+                    else{
+                        System.out.println("Recipe does not exist in recipe book.");
+                    }
+                }
+                else{
+                    System.out.println("Must be in recipe book to add a recipe. Use 'return' to go to recipe book.");
+                }
+            }
+        }
+    }
+    
+    private void removeIngredient(Command command){
+        Scanner reader = parser.getReader();
+        if(command.hasSecondWord()){
+            if(command.getSecondWord().equals("ingredient")){
+                if(currentRecipe != null){
+                    System.out.println("Enter ingredient name.");
+                    String name = reader.nextLine();
+                    boolean found = false;
+                    Ingredients toRemove = null;
+                    
+                    for(Ingredients i : currentRecipe.getIngredientsList()) {
+                        if (i.getName().equalsIgnoreCase(name)) {
+                            toRemove = i;
+                            found = true;
+                        }
+                    }
+                    
+                    if(found){
+                        currentRecipe.removeIngredient(toRemove);
+                        recipeBook.printRecipe(currentRecipe.getName());
+                    }
+                    else{
+                        System.out.println("Ingredient does not exist in recipe.");
+                    }
+                }
+                else{
+                    System.out.println("Must be in a recipe to add an ingredient. Use 'choose' to go to a recipe.");
+                }
+            }
+        }
+    }
+    
+    private void removeInstruction(Command command){
+        Scanner reader = parser.getReader();
+        if(command.hasSecondWord()){
+            if(command.getSecondWord().equals("instruction")){
+                if(currentRecipe != null){
+                    System.out.println("Enter instruction number.");
+                    int number = reader.nextInt();
+                    
+                    currentRecipe.removeInstruction(number);
                     recipeBook.printRecipe(currentRecipe.getName());
                 }
                 else{

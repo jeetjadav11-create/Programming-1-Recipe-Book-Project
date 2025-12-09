@@ -5,16 +5,16 @@ import java.util.ArrayList;
  * Coded By: Jeet Jadav
  */
 public class RecipeBook{
-    private String author;
+    private String owner;
     private ArrayList<Recipe> recipes;
 
-    public RecipeBook(String author){
-        this.author = author;
+    public RecipeBook(String owner){
+        this.owner = owner;
         recipes = new ArrayList<>();
     }
 
-    public String getAuthor(){
-        return author;
+    public String getOwner(){
+        return owner;
     }
     
      public ArrayList<Recipe> getRecipesList(){
@@ -62,6 +62,11 @@ public class RecipeBook{
         if(recipe != null) {
             for(Recipe r : recipes) {
                 if(recipe.equals(r)){
+                    //For each recipe in recipes, if it matches with the recipe to be added, then stops the code from proceeding.
+                    System.out.println("Recipe already exists in book.");
+                    return false;
+                }
+                if(recipe.getName().equals(r.getName()) && recipe.getAuthor().equals(r.getAuthor())){
                     //For each recipe in recipes, if it matches with the recipe to be added, then stops the code from proceeding.
                     System.out.println("Recipe already exists in book.");
                     return false;

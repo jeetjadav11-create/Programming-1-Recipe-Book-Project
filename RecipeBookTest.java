@@ -31,7 +31,7 @@ public class RecipeBookTest
     
     @Test
     public void testGetAuthor(){
-        assertEquals("Gianluca Zambito", recipeBook.getAuthor());
+        assertEquals("Gianluca Zambito", recipeBook.getOwner());
     }
     
     @Test

@@ -35,6 +35,9 @@ public class Parser {
         System.out.println("RETURN - Brings the user back to the recip book from a recipe.");
         System.out.println("CHOOSE - Choose a recipe from the recipe book. The recipe must be specified after 'choose' and must not have any spaces if the recipe name has more than one word (ex. Caprese Skewers -> CapreseSkewers).");
         System.out.println("SCALE - Scale a recipe to match the number of servings needed. The recipe must be specified after 'scale' and must not have any spaces if teh recipe name has more than on word (ex. Caprese Skewers -> CapreseSkewers).");
+        System.out.println("ADD - ");
+        System.out.println("REMOVE - ");
+        System.out.println("SET - ");
         System.out.println("HELP - Lists the acceptable commands and their descriptions");
         System.out.println("QUIT - Close the recipe book");
     }

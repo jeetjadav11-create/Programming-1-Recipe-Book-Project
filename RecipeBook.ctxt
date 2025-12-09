@@ -1,10 +1,10 @@
 #BlueJ class context
 comment0.target=RecipeBook
 comment0.text=\r\n\ Stores\ all\ the\ recipes\ into\ one\ object.\r\n\ Coded\ By\:\ Jeet\ Jadav\r\n
-comment1.params=author
+comment1.params=owner
 comment1.target=RecipeBook(java.lang.String)
 comment2.params=
-comment2.target=java.lang.String\ getAuthor()
+comment2.target=java.lang.String\ getOwner()
 comment3.params=
 comment3.target=java.util.ArrayList\ getRecipesList()
 comment4.params=recipeName
