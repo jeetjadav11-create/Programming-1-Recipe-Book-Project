@@ -11,12 +11,6 @@ public class RecipeBookTest
     private RecipeBook recipeBook;
     
     private Dessert cCake;
-    private Ingredients ingredient1CCake;
-    private Ingredients ingredient2CCake;
-    
-    private Entree omelet;
-    private Ingredients ingredient1Omelet;
-    private Ingredients ingredient2Omelet;
 
     public RecipeBookTest()
     {
@@ -58,9 +52,10 @@ public class RecipeBookTest
     
     @Test
     public void testScaleRecipe(){
-        assertEquals(false, recipeBook.scaleRecipe("Omelet", 2));
-        
         recipeBook.addRecipe(cCake);
-        assertEquals(true, recipeBook.scaleRecipe("Chocolate Cake", 2));
+        recipeBook.scaleRecipe("Chocolate Cake", 20);
+        assertEquals(20, cCake.getServings());
+        
+        assertEquals(false, recipeBook.scaleRecipe("Chocolate Cake", -20));
     }
 }

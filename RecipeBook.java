@@ -17,8 +17,12 @@ public class RecipeBook{
         return owner;
     }
     
-     public ArrayList<Recipe> getRecipesList(){
+    public ArrayList<Recipe> getRecipesList(){
         return recipes;
+    }
+    
+    public void setOwner(String newOwner){
+        owner = newOwner;
     }
 
     //Prints the ingredients and instructions of a given recipe in the book.
@@ -27,7 +31,7 @@ public class RecipeBook{
             for (Recipe r : recipes ){
                 if (r.getName().equals(recipeName)){
                     //For each recipe in recipes, if the name matches the name of the given recipe, then print it's ingredients and instructions.
-                    System.out.println("---- " + r.getName() + " by " + r.getAuthor() + " ----");
+                    System.out.println("------- " + r.getName() + " by " + r.getAuthor() + " -------");
                     System.out.println("");
                     System.out.println("Total Time: " + r.getTotalTime() + " minute(s)");
                     System.out.println("");
@@ -84,12 +88,12 @@ public class RecipeBook{
     }
     
     //Scales the amount of the ingredient(s) and servings in a recipe, and prints the modified list.
-    public boolean scaleRecipe(String recipeName, double amountToBeScaledBy){
-        if(!recipes.isEmpty() || amountToBeScaledBy <= 0){
+    public boolean scaleRecipe(String recipeName, double numberOfServingsNeeded){
+        if(!recipes.isEmpty() || numberOfServingsNeeded <= 0){
             for (Recipe r : recipes ){
                 if (r.getName().equals(recipeName)){
                     //For each recipe in recipes, if its name matches with the name given, then calls the method scaleRecipe from Recipe.
-                    r.scaleRecipe(amountToBeScaledBy);
+                    r.scaleRecipe(numberOfServingsNeeded);
                     return true;
                 }
             }

@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
 /**
  * The driver class for the project.
  * Coded By: Gianluca Zambito
@@ -19,7 +18,7 @@ public class RecipeBookMenu {
     
     //Sets this class as the main class. Do not use unless starting project outside of BlueJ.
     public static void main(String[] args) {
-        RecipeBook recipeBook = new RecipeBook("Gianluca Zambito");
+        RecipeBook recipeBook = new RecipeBook("Uknown");
         RecipeBookMenu recipeBookMenu = new RecipeBookMenu(recipeBook);
         recipeBookMenu.open();
     }
@@ -78,7 +77,7 @@ public class RecipeBookMenu {
 
     //Prints the opening line.
     private void printWelcome() {
-        System.out.println("---- " + recipeBook.getOwner() + "'s" + " Recipe Book ----");
+        System.out.println("------- " + recipeBook.getOwner() + "'s" + " Recipe Book -------");
         System.out.println();
     }
     
@@ -116,7 +115,7 @@ public class RecipeBookMenu {
                 removeInstruction(command);
                 break;
             case SET:
-                
+                setOwner(command);
                 break;
             case HELP:
                 printHelp();
@@ -146,35 +145,49 @@ public class RecipeBookMenu {
     
     //Chooses a recipe from the list of recipes.
     private void chooseRecipe(Command command){
+        Scanner reader = parser.getReader();
         if(command.hasSecondWord()){
-            if(currentRecipe == null){
-                for(Recipe r : recipeBook.getRecipesList()){
-                    String fixedName = r.getName().trim().toLowerCase().replaceAll("\\s","");
-                    if(command.getSecondWord().equals(fixedName)){
-                        recipeBook.printRecipe(r.getName());
-                        currentRecipe = r;
+            if(command.getSecondWord().equals("recipe")){
+                if(currentRecipe == null){
+                    System.out.println("Enter recipe name.");
+                    String name = reader.nextLine();
+                    
+                    System.out.println("Enter author name.");
+                    String author = reader.nextLine();
+                    
+                    for(Recipe r : recipeBook.getRecipesList()){
+                        if(r.getName().equals(name) && r.getAuthor().equals(author)){
+                            recipeBook.printRecipe(r.getName());
+                            currentRecipe = r;
+                        }
                     }
                 }
-            }
-            else{
-                System.out.println(currentRecipe.getName() + " is currently chosen. Return to recipe book befre choosing another recipe.");
+                else{
+                    System.out.println(currentRecipe.getName() + " is currently chosen. Return to recipe book befre choosing another recipe.");
+                }
             }
         }
     }
     
     //Scales the amount of the ingredient(s) and servings in a recipe, and prints the modified list.
     private void scaleRecipe(Command command){
+        Scanner reader = parser.getReader();
         if(command.hasSecondWord()){
-            if(currentRecipe != null){
-                double numberOfServingsNeeded = Double.parseDouble(command.getSecondWord());
-                recipeBook.scaleRecipe(currentRecipe.getName(), numberOfServingsNeeded);
-            }
-            else{
-                System.out.println("Not currently viewing a recipe. Use 'choose' to select a recipe.");
+            if(command.getSecondWord().equals("recipe")){
+                if(currentRecipe != null){
+                    System.out.println("Enter number of servings needed.");
+                    double numberOfServingsNeeded = reader.nextDouble();
+                    
+                    recipeBook.scaleRecipe(currentRecipe.getName(), numberOfServingsNeeded);
+                }
+                else{
+                    System.out.println("Not currently viewing a recipe. Use 'choose' to select a recipe.");
+                }
             }
         }
     }
     
+    //Adds a recipe to recipeBook.
     private void addRecipe(Command command){
         Scanner reader = parser.getReader();
         if(command.hasSecondWord()){
@@ -185,14 +198,13 @@ public class RecipeBookMenu {
                         
                     System.out.println("Enter number of servings.");
                     double servings = reader.nextDouble();
-                    reader.nextLine();
                         
                     System.out.println("Enter total time to cook (in minutes).");
                     double time = reader.nextDouble();
-                    reader.nextLine();
                     
                     Recipe recipe = new Recipe(name, recipeBook.getOwner(), servings, time);
                     recipeBook.addRecipe(recipe);
+                    
                     printWelcome();
                     recipeBook.printAllRecipes();
                 }
@@ -203,6 +215,7 @@ public class RecipeBookMenu {
         }
     }
     
+    //Adds an ingredient to a recipe.
     private void addIngredient(Command command){
         Scanner reader = parser.getReader();
         if(command.hasSecondWord()){
@@ -213,7 +226,6 @@ public class RecipeBookMenu {
                         
                     System.out.println("Enter amount.");
                     double amount = reader.nextDouble();
-                    reader.nextLine();
                     
                     Unit unit = null;
                     while(unit == null){
@@ -226,7 +238,6 @@ public class RecipeBookMenu {
                             for (Unit u : Unit.values()) {
                                 System.out.println(" - " + u);
                             }
-                            
                         }
                     }
                     
@@ -241,6 +252,7 @@ public class RecipeBookMenu {
         }
     }
     
+    //Adds an instruction to a recipe.
     private void addInstruction(Command command){
         Scanner reader = parser.getReader();
         if(command.hasSecondWord()){
@@ -259,6 +271,7 @@ public class RecipeBookMenu {
         }
     }
     
+    //Removes a recipe from the recipe book.
     private void removeRecipe(Command command){
         Scanner reader = parser.getReader();
         if(command.hasSecondWord()){
@@ -296,6 +309,7 @@ public class RecipeBookMenu {
         }
     }
     
+    //Removes an ingredient from a recipe.
     private void removeIngredient(Command command){
         Scanner reader = parser.getReader();
         if(command.hasSecondWord()){
@@ -328,6 +342,7 @@ public class RecipeBookMenu {
         }
     }
     
+    //Removes an instruction from a recipe.
     private void removeInstruction(Command command){
         Scanner reader = parser.getReader();
         if(command.hasSecondWord()){
@@ -346,6 +361,22 @@ public class RecipeBookMenu {
         }
     }
     
+    //Sets the owner to the recipe book.
+    private void setOwner(Command command){
+        Scanner reader = parser.getReader();
+        if(command.hasSecondWord()){
+            if(command.getSecondWord().equals("owner")){
+                System.out.println("Enter new owner name.");
+                String name = reader.nextLine();
+                
+                recipeBook.setOwner(name);
+                printWelcome();
+                recipeBook.printAllRecipes();
+            }
+        }
+    }
+    
+    //Prints the help lines.
     private void printHelp(){
         parser.showCommands();
     }

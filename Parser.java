@@ -31,14 +31,14 @@ public class Parser {
 
     //Prints the help lines.
     public void showCommands() {
-        System.out.println("Your command words are: return, choose, scale, help, and quit.");
-        System.out.println("RETURN - Brings the user back to the recip book from a recipe.");
-        System.out.println("CHOOSE - Choose a recipe from the recipe book. The recipe must be specified after 'choose' and must not have any spaces if the recipe name has more than one word (ex. Caprese Skewers -> CapreseSkewers).");
-        System.out.println("SCALE - Scale a recipe to match the number of servings needed. The recipe must be specified after 'scale' and must not have any spaces if teh recipe name has more than on word (ex. Caprese Skewers -> CapreseSkewers).");
-        System.out.println("ADD - ");
-        System.out.println("REMOVE - ");
-        System.out.println("SET - ");
-        System.out.println("HELP - Lists the acceptable commands and their descriptions");
-        System.out.println("QUIT - Close the recipe book");
+        System.out.println("Your command words are: return, choose, scale, add, set, help, and quit.");
+        System.out.println("RETURN - Brings the user back to the recip book from a recipe (ex. return).");
+        System.out.println("CHOOSE (RECIPE) - Choose a recipe from the recipe book (ex. choose recipe).");
+        System.out.println("SCALE (RECIPE) - Scale a recipe to match the number of servings needed (ex. scale recipe).");
+        System.out.println("ADD - Add a recipe, ingredient, or instruction to a recipe or the recipe book. What to add must be specified after 'add' (ex. add ingredient).");
+        System.out.println("REMOVE - Remove a recipe, ingredient, or instruction to a recipe or the recipe book. What to remove must be specified after 'remove' (ex. remove instruction).");
+        System.out.println("SET (OWNER) - Set the owner to the recipe book (ex. set owner).");
+        System.out.println("HELP - List the acceptable commands and their descriptions (ex. help).");
+        System.out.println("QUIT - Close the recipe book (ex. quit).");
     }
 }
