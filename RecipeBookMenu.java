@@ -177,7 +177,8 @@ public class RecipeBookMenu {
                 if(currentRecipe != null){
                     System.out.println("Enter number of servings needed.");
                     double numberOfServingsNeeded = reader.nextDouble();
-                    
+                    reader.nextLine();
+
                     recipeBook.scaleRecipe(currentRecipe.getName(), numberOfServingsNeeded);
                 }
                 else{
@@ -198,10 +199,12 @@ public class RecipeBookMenu {
                         
                     System.out.println("Enter number of servings.");
                     double servings = reader.nextDouble();
-                        
+                    reader.nextLine();
+    
                     System.out.println("Enter total time to cook (in minutes).");
                     double time = reader.nextDouble();
-                    
+                    reader.nextLine();
+
                     Recipe recipe = new Recipe(name, recipeBook.getOwner(), servings, time);
                     recipeBook.addRecipe(recipe);
                     
@@ -350,7 +353,8 @@ public class RecipeBookMenu {
                 if(currentRecipe != null){
                     System.out.println("Enter instruction number.");
                     int number = reader.nextInt();
-                    
+                    reader.nextLine();
+
                     currentRecipe.removeInstruction(number);
                     recipeBook.printRecipe(currentRecipe.getName());
                 }
