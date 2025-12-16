@@ -10,7 +10,7 @@ public class Recipe{
     private double totalTime;
     private ArrayList<Ingredients> ingredients;
     private HashMap<Integer, String> instructions;
-    
+
     public Recipe(String name, String author, double servings, double totalTime){
         this.name = name;
         this.author = author;
@@ -19,27 +19,27 @@ public class Recipe{
         ingredients = new ArrayList<>();
         instructions = new HashMap<>();
     }
-    
+
     public String getName(){
         return name;
     }
-    
+
     public String getAuthor(){
         return author;
     }
-    
+
     public double getServings(){
         return servings;
     }
-    
+
     public double getTotalTime(){
         return totalTime;
     }
-    
+
     public ArrayList<Ingredients> getIngredientsList(){
         return ingredients;
     }
-    
+
     //Prints all ingredients.
     public void printIngredients(){
         if (ingredients.isEmpty()) {
@@ -59,7 +59,7 @@ public class Recipe{
             }
         }
     }
-    
+
     //Prints all instructions.
     public void printInstructions(){
         if (instructions.isEmpty()) {
@@ -67,14 +67,14 @@ public class Recipe{
             System.out.println("No instructions have been added for " + getName() + " by " + getAuthor() + " yet.");
             return;
         }
-        
+
         System.out.println("Instructions:");
         for (int step : instructions.keySet()) {
             //Prints the each key + 1 and their respective value(the instruction).
             System.out.println((step + 1) + ". " + instructions.get(step));
         }   
     }
-    
+
     //Adds an ingredient to list ingredients.
     public boolean addIngredient(Ingredients ingredient){
         if(ingredient != null){
@@ -90,17 +90,17 @@ public class Recipe{
         }
         return false;
     }
-    
+
     //Adds an instruction and step number to hash map instructions.
     public void addInstruction(String instruction){
         instructions.put(instructions.size(), instruction);
     }
-    
+
     //Removes an ingredient from list ingredients.
     public void removeIngredient(Ingredients ingredient){
         ingredients.remove(ingredient);
     }
-    
+
     //Removes an instruction and its corresponding step number from hash map instructions.
     public void removeInstruction(int step){
         instructions.remove(step - 1);
@@ -121,21 +121,21 @@ public class Recipe{
 
         instructions = newMap;
     }
-    
+
     //Scales the amount of the ingredient(s) and servings, and prints the modified list.
     public void scaleRecipe(double numberOfServingsNeeded){
         double difference = 0.0;
         if(numberOfServingsNeeded > 0){
             difference = numberOfServingsNeeded / servings;
         }
-        
+
         if(ingredients != null){
             for (Ingredients i : ingredients) {
                 //For each ingredient in list ingredients, multiplies the current amount by the amount to be scaled by.
                 i.setAmount(i.getAmount() * difference);
             }
             servings = numberOfServingsNeeded;
-            
+
             System.out.println("---- " + name + " by " + author + " ----");
             System.out.println("");
             System.out.println("Total Time: " + totalTime + " minute(s)");
@@ -145,13 +145,38 @@ public class Recipe{
             printIngredients();
             System.out.println("");
             printInstructions();
-            
+
             for (Ingredients i : ingredients) {
                 //For each ingredient in list ingredients, brings the amount bak to what it was originally.
                 i.setAmount(i.getAmount() / difference);
             }
             servings = servings / difference;
         }
-    }
-}
 
+        @Override
+        public String toString() {
+            return name + " by " + author + " (" + servings + " servings, " + totalTime + " min)";
+        }
+
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Recipe other = (Recipe) obj;
+        return name.equals(other.name) && author.equals(other.author);
+    }
+
+    @Override
+    public String toString() {
+        return name + " by " + author + " (" + servings + " servings, " + totalTime + " min)";
+    }
+
+    public HashMap<Integer, String> getInstructions() {
+        return instructions;
+    }

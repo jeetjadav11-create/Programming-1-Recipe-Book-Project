@@ -16,11 +16,11 @@ public class RecipeBook{
     public String getOwner(){
         return owner;
     }
-    
+
     public ArrayList<Recipe> getRecipesList(){
         return recipes;
     }
-    
+
     public void setOwner(String newOwner){
         owner = newOwner;
     }
@@ -86,7 +86,7 @@ public class RecipeBook{
     public void removeRecipe(Recipe recipe){
         recipes.remove(recipe);
     }
-    
+
     //Scales the amount of the ingredient(s) and servings in a recipe, and prints the modified list.
     public boolean scaleRecipe(String recipeName, double numberOfServingsNeeded){
         if(!recipes.isEmpty() || numberOfServingsNeeded <= 0){
@@ -101,4 +101,24 @@ public class RecipeBook{
         System.out.println("No recipes have been added yet or the amountToBeScaledBy is less than or equal to 0.");
         return false;
     }
+
+    @Override
+    public String toString() {
+        return owner + "'s Recipe Book (" + recipes.size() + " recipes)";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        RecipeBook other = (RecipeBook) obj;
+        return owner.equals(other.owner);
+    }
+
+    
+    
 }

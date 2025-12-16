@@ -57,7 +57,7 @@ public class RecipeTest
         recipe.addInstruction("Mix all ingredients.");
         recipe.addInstruction("Bake in the oven.");
 
-        assertTrue(true);
+        assertEquals(2, recipe.getInstructions().size());
     }
 
     @Test
@@ -66,32 +66,16 @@ public class RecipeTest
         recipe.addInstruction("Step 2");
 
         recipe.removeInstruction(1); 
-        recipe.removeInstruction(1); 
 
-        assertTrue(true);
+        assertEquals(1, recipe.getInstructions().size());
     }
 
     @Test
-    public void testPrintIngredients() {
-        recipe.printIngredients();
-
+    public void testIngredientsListSize() {
         recipe.addIngredient(ing1);
         recipe.addIngredient(ing2);
 
-        recipe.printIngredients(); 
-
-        assertTrue(true);
-    }
-
-    @Test
-    public void testPrintInstructions() {
-        recipe.printInstructions();
-        recipe.addInstruction("Step 1");
-        recipe.addInstruction("Step 2");
-
-        recipe.printInstructions(); 
-
-        assertTrue(true);
+        assertEquals(2, recipe.getIngredientsList().size());
     }
 
     @Test
