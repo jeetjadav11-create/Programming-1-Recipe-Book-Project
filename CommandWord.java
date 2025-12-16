@@ -11,6 +11,7 @@ public enum CommandWord {
     ADD("add"),
     REMOVE("remove"),
     SET("set"),
+    PRINT("print"),
     UNKNOWN("unknown");
     
     

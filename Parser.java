@@ -39,6 +39,8 @@ public class Parser {
         System.out.println("REMOVE - Remove a recipe, ingredient, or instruction to a recipe or the recipe book. What to remove must be specified after 'remove' (ex. remove instruction).");
         System.out.println("SET (OWNER) - Set the owner to the recipe book (ex. set owner).");
         System.out.println("HELP - List the acceptable commands and their descriptions (ex. help).");
+        System.out.println("PRINT ALL - Print all recipes with full details (ex. print all).");
+
         System.out.println("QUIT - Close the recipe book (ex. quit).");
     }
 }

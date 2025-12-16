@@ -18,6 +18,8 @@ public class CommandWords
         validCommands.put("add", CommandWord.ADD);
         validCommands.put("remove", CommandWord.REMOVE);
         validCommands.put("set", CommandWord.SET);
+        validCommands.put("print", CommandWord.PRINT);
+
     }
     
     //Converts an input command into the right enum value.
