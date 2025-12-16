@@ -52,7 +52,7 @@ public class RecipeBook{
         if (!recipes.isEmpty()) {
             for (Recipe r : recipes) {
                 //For each recipe in recipes, prints the name and author.
-                System.out.println("- " + r.getName() + " by " + r.getAuthor());
+                System.out.println("- " + r);
             }
         }
         else{
@@ -70,11 +70,7 @@ public class RecipeBook{
                     System.out.println("Recipe already exists in book.");
                     return false;
                 }
-                if(recipe.getName().equals(r.getName()) && recipe.getAuthor().equals(r.getAuthor())){
-                    //For each recipe in recipes, if it matches with the recipe to be added, then stops the code from proceeding.
-                    System.out.println("Recipe already exists in book.");
-                    return false;
-                }
+
             }
             recipes.add(recipe);
             return true;
@@ -119,6 +115,5 @@ public class RecipeBook{
         return owner.equals(other.owner);
     }
 
-    
     
 }
