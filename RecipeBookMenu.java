@@ -8,12 +8,16 @@ public class RecipeBookMenu {
     private Parser parser;
     private RecipeBook recipeBook;
     private Recipe currentRecipe;
+    private CommandWords commandWords;
+
 
     public RecipeBookMenu(RecipeBook recipeBook) {
         parser = new Parser();
+        commandWords = new CommandWords();
         this.recipeBook = recipeBook;
         currentRecipe = null;
         createRecipeBook();
+        
     }
 
     //Sets this class as the main class. Do not use unless starting project outside of BlueJ.
@@ -86,12 +90,7 @@ public class RecipeBookMenu {
         boolean wantToQuit = false;
 
         //Gets the first command.
-        CommandWord commandWord = CommandWord.fromString(command.getCommandWord());
-
-        if (commandWord == null) {
-            System.out.print("");
-            return false;
-        }
+       CommandWord commandWord = commandWords.getCommandWord(command.getCommandWord());
 
         //Checks to see if the command word matches any of the following cases, if so, runs the code within the case.
         switch (commandWord) {

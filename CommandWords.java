@@ -19,9 +19,16 @@ public class CommandWords
         validCommands.put("remove", CommandWord.REMOVE);
         validCommands.put("set", CommandWord.SET);
         validCommands.put("print", CommandWord.PRINT);
+        validCommands.put("back", CommandWord.RETURN);
+        validCommands.put("list", CommandWord.PRINT);
+        validCommands.put("show", CommandWord.PRINT);
+        validCommands.put("view", CommandWord.PRINT);
+        validCommands.put("select", CommandWord.CHOOSE);
+        validCommands.put("pick", CommandWord.CHOOSE);
+        validCommands.put("exit", CommandWord.QUIT);
+        validCommands.put("leave", CommandWord.QUIT);
 
     }
-    
     //Converts an input command into the right enum value.
     public CommandWord getCommandWord(String commandWord)
     {

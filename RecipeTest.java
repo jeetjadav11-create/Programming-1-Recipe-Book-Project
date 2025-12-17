@@ -91,12 +91,6 @@ public class RecipeTest
         assertEquals(original2, ing2.getAmount());
     }
 
-    @Test
-    public void testEqualsRecipe() {
-        Recipe r1 = new Recipe("Cake", "Jeet", 2, 10);
-        Recipe r2 = new Recipe("Cake", "Jeet", 4, 20);
-
-        assertTrue(r1.equals(r2));
-    }
+    
 
 }

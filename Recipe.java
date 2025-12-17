@@ -152,13 +152,12 @@ public class Recipe{
             }
             servings = servings / difference;
         }
-
-        @Override
-        public String toString() {
-            return name + " by " + author + " (" + servings + " servings, " + totalTime + " min)";
-        }
-
     }
+
+    public HashMap<Integer, String> getInstructions() {
+        return instructions;
+    }
+
 
     @Override
     public boolean equals(Object obj) {
@@ -177,6 +176,4 @@ public class Recipe{
         return name + " by " + author + " (" + servings + " servings, " + totalTime + " min)";
     }
 
-    public HashMap<Integer, String> getInstructions() {
-        return instructions;
-    }
+}

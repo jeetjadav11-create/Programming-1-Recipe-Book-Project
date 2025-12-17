@@ -40,6 +40,8 @@ public class Parser {
         System.out.println("SET (OWNER) - Set the owner to the recipe book (ex. set owner).");
         System.out.println("HELP - List the acceptable commands and their descriptions (ex. help).");
         System.out.println("PRINT ALL - Print all recipes with full details (ex. print all).");
+        System.out.println("You can also use: back(return), select/ pick(choose), list/show/view(print), exit(quit).");
+
 
         System.out.println("QUIT - Close the recipe book (ex. quit).");
     }
