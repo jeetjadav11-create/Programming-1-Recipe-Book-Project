@@ -4,19 +4,32 @@
  */
 public enum CommandWord {
     RETURN("return"),
-    CHOOSE("choose"),
-    HELP("help"),
-    QUIT("quit"),
-    SCALE("scale"),
-    ADD("add"),
-    REMOVE("remove"),
-    SET("set"),
-    PRINT("print"),
-    UNKNOWN("unknown");
-    
-    
-    private String command;
 
+    CHOOSE("choose"),
+
+    HELP("help"),
+
+    QUIT("quit"),
+
+    SCALE("scale"),
+
+    ADD("add"),
+
+    REMOVE("remove"),
+
+    SET("set"),
+
+    PRINT("print"),
+
+    FILTER("filter"),
+
+    FAVORITE("favorite"),
+
+    UNFAVORITE("unfavorite"),
+
+    UNKNOWN("unknown");
+
+    private String command;
     CommandWord(String command) {
         this.command = command;
     }

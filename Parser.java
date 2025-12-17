@@ -13,7 +13,7 @@ public class Parser {
     public Scanner getReader(){
         return reader;
     }
-    
+
     //Receives the command and checks if it has one or two words.
     public Command getCommand() {
         System.out.print("\n> ");
@@ -41,7 +41,10 @@ public class Parser {
         System.out.println("HELP - List the acceptable commands and their descriptions (ex. help).");
         System.out.println("PRINT ALL - Print all recipes with full details (ex. print all).");
         System.out.println("You can also use: back(return), select/ pick(choose), list/show/view(print), exit(quit).");
-
+        System.out.println("FILTER (CATEGORY) - Show recipes by category (ex. filter dessert).");
+        System.out.println("FAVORITE RECIPE - Mark the current recipe as favorite (ex. favorite recipe).");
+        System.out.println("UNFAVORITE RECIPE - Remove favorite from current recipe (ex. unfavorite recipe).");
+        System.out.println("PRINT FAVORITES - Print favorite recipes (ex. print favorites).");
 
         System.out.println("QUIT - Close the recipe book (ex. quit).");
     }

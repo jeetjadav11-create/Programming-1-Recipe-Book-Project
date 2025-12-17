@@ -10,14 +10,13 @@ public class RecipeBookMenu {
     private Recipe currentRecipe;
     private CommandWords commandWords;
 
-
     public RecipeBookMenu(RecipeBook recipeBook) {
         parser = new Parser();
         commandWords = new CommandWords();
         this.recipeBook = recipeBook;
         currentRecipe = null;
         createRecipeBook();
-        
+
     }
 
     //Sets this class as the main class. Do not use unless starting project outside of BlueJ.
@@ -30,7 +29,9 @@ public class RecipeBookMenu {
     //Loads premade recipes into the recipe book.
     private void createRecipeBook() {
         //Caprese Skewers.
+
         Appetizer cS = new Appetizer("Caprese Skewers", "Gianluca Zambito", 10.0, 10);
+        cS.setCategory("appetizer");
         Ingredients cT = new Ingredients("Cherry Tomatoe", 20.0, Unit.NULL);
         cS.addIngredient(cT);
         Ingredients mB = new Ingredients("Mozzarella Ball", 10.0, Unit.NULL);
@@ -40,6 +41,7 @@ public class RecipeBookMenu {
 
         //Chocolate Chip Mug Cake.
         Dessert cCMC = new Dessert("Chocolate Chip Mug Cake", "Gianluca Zambito", 1.0, 5.0);
+        cCMC.setCategory("dessert");
         Ingredients eY = new Ingredients("Egg Yolk", 2.0, Unit.NULL);
         cCMC.addIngredient(eY);
         Ingredients butter = new Ingredients("Melted Butter", 1.0, Unit.TABLESPOON);
@@ -63,6 +65,7 @@ public class RecipeBookMenu {
 
         recipeBook.addRecipe(cS);
         recipeBook.addRecipe(cCMC);
+
     }
 
     //Opens the menu.
@@ -90,7 +93,7 @@ public class RecipeBookMenu {
         boolean wantToQuit = false;
 
         //Gets the first command.
-       CommandWord commandWord = commandWords.getCommandWord(command.getCommandWord());
+        CommandWord commandWord = commandWords.getCommandWord(command.getCommandWord());
 
         //Checks to see if the command word matches any of the following cases, if so, runs the code within the case.
         switch (commandWord) {
@@ -124,6 +127,15 @@ public class RecipeBookMenu {
                 break;
             case PRINT:
                 printAll(command);
+                break;
+            case FILTER:
+                filterRecipes(command);
+                break;
+            case FAVORITE:
+                setFavorite(command, true);
+                break;
+            case UNFAVORITE:
+                setFavorite(command, false);
                 break;
 
             default:
@@ -206,9 +218,14 @@ public class RecipeBookMenu {
 
                     System.out.println("Enter total time to cook (in minutes).");
                     double time = reader.nextDouble();
-                    reader.nextLine();
+                    reader.nextLine(); 
+
+                    System.out.println("Enter category (one word, ex. dessert).");
+                    String category = reader.nextLine();
 
                     Recipe recipe = new Recipe(name, recipeBook.getOwner(), servings, time);
+                    recipe.setCategory(category);
+
                     recipeBook.addRecipe(recipe);
 
                     printWelcome();
@@ -383,7 +400,7 @@ public class RecipeBookMenu {
         }
     }
 
-    //Prints all recipes fully.
+    //Prints all recipes fully OR only favorites.
     private void printAll(Command command){
         if(command.hasSecondWord()){
             if(command.getSecondWord().equals("all")){
@@ -392,15 +409,73 @@ public class RecipeBookMenu {
                     System.out.println();
                 }
             }
+            else if(command.getSecondWord().equals("favorites")){
+                boolean found = false;
+                for(Recipe r : recipeBook.getRecipesList()){
+                    if(r.isFavorite()){
+                        recipeBook.printRecipe(r.getName());
+                        System.out.println();
+                        found = true;
+                    }
+                }
+                if(!found){
+                    System.out.println("No favorite recipes yet.");
+                }
+            }
             else{
-                System.out.println("Print what? (ex. print all)");
+                System.out.println("Print what? (ex. print all, print favorites)");
             }
         }
         else{
-            System.out.println("Print what? (ex. print all)");
+            System.out.println("Print what? (ex. print all, print favorites)");
         }
     }
 
+    //Shows recipes that match a category.
+    private void filterRecipes(Command command){
+        if(command.hasSecondWord()){
+            String cat = command.getSecondWord().toLowerCase();
+            boolean found = false;
+
+            for(Recipe r : recipeBook.getRecipesList()){
+                if(r.getCategory().equals(cat)){
+                    recipeBook.printRecipe(r.getName());
+                    System.out.println();
+                    found = true;
+                }
+            }
+
+            if(!found){
+                System.out.println("No recipes found in category: " + cat);
+            }
+        }
+        else{
+            System.out.println("Filter what? (ex. filter dessert)");
+        }
+    }
+
+    //Marks/unmarks the current recipe as favorite.
+    private void setFavorite(Command command, boolean value){
+        if(command.hasSecondWord() && command.getSecondWord().equals("recipe")){
+            if(currentRecipe != null){
+                currentRecipe.setFavorite(value);
+                if(value){
+                    System.out.println(currentRecipe.getName() + " is now a favorite.");
+                }
+                else{
+                    System.out.println(currentRecipe.getName() + " is no longer a favorite.");
+                }
+            }
+            else{
+                System.out.println("Not currently viewing a recipe. Use 'choose recipe' first.");
+            }
+        }
+        else{
+            System.out.println("Use: favorite recipe  OR  unfavorite recipe");
+        }
+    }
+
+    
     //Prints the help lines.
     private void printHelp(){
         parser.showCommands();

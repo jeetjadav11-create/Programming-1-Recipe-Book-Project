@@ -10,6 +10,8 @@ public class Recipe{
     private double totalTime;
     private ArrayList<Ingredients> ingredients;
     private HashMap<Integer, String> instructions;
+    private boolean favorite;
+    private String category;
 
     public Recipe(String name, String author, double servings, double totalTime){
         this.name = name;
@@ -18,6 +20,9 @@ public class Recipe{
         this.totalTime = totalTime;
         ingredients = new ArrayList<>();
         instructions = new HashMap<>();
+        favorite = false;
+        category = "uncategorized";
+
     }
 
     public String getName(){
@@ -158,7 +163,6 @@ public class Recipe{
         return instructions;
     }
 
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -174,6 +178,24 @@ public class Recipe{
     @Override
     public String toString() {
         return name + " by " + author + " (" + servings + " servings, " + totalTime + " min)";
+    }
+
+    public boolean isFavorite(){
+        return favorite;
+    }
+
+    public void setFavorite(boolean value){
+        favorite = value;
+    }
+
+    public String getCategory(){
+        return category;
+    }
+
+    public void setCategory(String newCategory){
+        if(newCategory != null && !newCategory.trim().isEmpty()){
+            category = newCategory.trim().toLowerCase();
+        }
     }
 
 }

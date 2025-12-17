@@ -27,6 +27,10 @@ public class CommandWords
         validCommands.put("pick", CommandWord.CHOOSE);
         validCommands.put("exit", CommandWord.QUIT);
         validCommands.put("leave", CommandWord.QUIT);
+        validCommands.put("filter", CommandWord.FILTER);
+        validCommands.put("favorite", CommandWord.FAVORITE);
+        validCommands.put("unfavorite", CommandWord.UNFAVORITE);
+
 
     }
     //Converts an input command into the right enum value.
